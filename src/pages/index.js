@@ -40,8 +40,8 @@ export const getPosts = graphql`
         createdAt(formatString: "DD MMMM 'YY")
         thumbnail {
           id
-          sizes(toFormat: WEBP) {
-            ...GatsbyContentfulSizes_tracedSVG
+          fluid {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }

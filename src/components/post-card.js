@@ -14,8 +14,8 @@ const PostCard = ({
   thumbnail,
 }) => {
   return (
-    <Article style={{ width: "20rem" }}>
-      <Img sizes={thumbnail.sizes}></Img>
+    <Article>
+      <Img className="thumbnail" fluid={thumbnail.fluid} />
       <h2>
         <Link to={`/${slug}`}>{title}</Link>
       </h2>
@@ -23,7 +23,9 @@ const PostCard = ({
       <p>{description}</p>
       <ul>
         {tags.map((tag, index) => (
-          <li key={index}>{tag}</li>
+          <li className="tag" key={index}>
+            {tag}
+          </li>
         ))}
       </ul>
       <Link to={`/${slug}`}>Read More...</Link>
@@ -32,6 +34,11 @@ const PostCard = ({
 }
 
 //* styled-component < 💅>
-const Article = styled.div``
+const Article = styled.div`
+  height: 30rem;
+  .thumbnail {
+    height: 33%;
+  }
+`
 
 export default PostCard
