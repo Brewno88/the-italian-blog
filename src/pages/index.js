@@ -5,23 +5,22 @@ import Layout from "../components/layout"
 import PostCard from "../components/post-card"
 import SEO from "../components/seo"
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data, location }) => {
   const posts = data.posts.nodes
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" />
-      <h1>Posts</h1>
       {posts.map((post, i) => (
         <PostCard
-          key={post.slug}
+          key={post.id}
           title={post.title}
           id={post.id}
           slug={post.slug}
           tags={post.tags}
           thumbnail={post.thumbnail}
           description={post.description}
-          createdAt={post.created}
+          createdAt={post.createdAt}
         />
       ))}
     </Layout>
@@ -37,7 +36,7 @@ export const getPosts = graphql`
         tags
         slug
         description
-        createdAt(formatString: "DD MMMM 'YY")
+        createdAt(formatString: "DD MMMM YYYY")
         thumbnail {
           id
           fluid {
