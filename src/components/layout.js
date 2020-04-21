@@ -30,7 +30,7 @@ const Layout = ({ children, location }) => {
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          padding: `${location.pathname === "/" ? "0 1.0875rem 1.45rem" : 0}`,
         }}
       >
         <main>{children}</main>

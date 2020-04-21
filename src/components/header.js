@@ -9,7 +9,7 @@ const Header = ({ siteTitle, location }) => {
     <header
       style={{
         background: `${colors.primary}`,
-        marginBottom: `1.45rem`,
+        marginBottom: `${location.pathname === "/" ? "1.45rem" : 0}`,
       }}
     >
       <div
