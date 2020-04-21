@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 
 import styled from "styled-components"
 import { colors } from "../utils/variables"
+import Tag from "../components/tag"
 
 const PostCard = ({
   id,
@@ -31,13 +32,11 @@ const PostCard = ({
         <div className="bottom">
           <div className="tags">
             {tags.map((tag, index) => (
-              <h6 className="tag" key={index}>
-                {`#${tag}`}
-              </h6>
+              <Tag key={index}>{`#${tag}`}</Tag>
             ))}
           </div>
           <Link className="read-more" to={`/${slug}`}>
-            <button className="btn">Read More...</button>
+            <button className="btn">Read more...</button>
           </Link>
         </div>
       </div>
@@ -76,17 +75,6 @@ const Article = styled.div`
       justify-content: space-between;
       .tags {
         display: flex;
-        .tag {
-          list-style: none;
-          font-size: 0.7rem;
-          margin: 0 0.2rem;
-          background: ${colors.primary};
-          color: ${colors.secondary};
-          border-radius: 3rem;
-          padding: 0.4rem;
-          cursor: pointer;
-          align-self: center;
-        }
       }
       .btn {
         color: ${colors.background};
