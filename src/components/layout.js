@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Footer from "./footer"
 import "./global.css"
 
 const Layout = ({ children, location }) => {
@@ -34,6 +35,7 @@ const Layout = ({ children, location }) => {
         }}
       >
         <main>{children}</main>
+        <Footer siteTitle={data.site.siteMetadata.title} />
       </div>
     </>
   )
