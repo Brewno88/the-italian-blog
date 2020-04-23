@@ -59,15 +59,15 @@ const PostPage = ({ data, location }) => {
         {/************** SUB--HEADER **************/}
         <div className="sub-header">
           <div className="sub-header--date">
-            {/* {iconSolid.clock} */}
+            {iconSolid("faClock")}
             <small>{post.createdAt}</small>
           </div>
 
           <div className="socials">
-            {iconCircle("faShareAlt", "primary")}
-            {iconCircle("faFacebookF", "primary")}
-            {iconCircle("faWhatsapp", "primary")}
-            {iconCircle("faTwitter", "primary")}
+            {iconCircle("faShareAlt", "primary", { marginLeft: ".5rem" })}
+            {iconCircle("faFacebookF", "primary", { marginLeft: ".5rem" })}
+            {iconCircle("faWhatsapp", "primary", { marginLeft: ".5rem" })}
+            {iconCircle("faTwitter", "primary", { marginLeft: ".5rem" })}
           </div>
         </div>
         {/************** MAIN **************/}
@@ -84,23 +84,31 @@ const PostPage = ({ data, location }) => {
           {/************** PREPARATION INFO **************/}
           <div className="prep-info-wrapper">
             <div className="prep-info">
-              <h4 className="prep-info--title">Level</h4>
-              {iconSolid("faSignal", "secondary")}
+              <h4 className="prep-info--title">
+                {iconSolid("faSignal", { margin: "0 .5rem" })}
+                Level
+              </h4>
               <small className="prep-info--text">{post.difficulty}</small>
             </div>
             <div className="prep-info">
-              <h4 className="prep-info--title">Prep</h4>
-              {iconSolid("faUtensilSpoon", "secondary")}
+              <h4 className="prep-info--title">
+                {iconSolid("faUtensilSpoon", { margin: "0 .5rem" })}
+                Prep
+              </h4>
               <small className="prep-info--text">{post.prepTime} mins</small>
             </div>
             <div className="prep-info">
-              <h4 className="prep-info--title">Cook</h4>
-              {iconSolid("faFire", "secondary")}
+              <h4 className="prep-info--title">
+                {iconSolid("faFire", { margin: "0 .5rem" })}
+                Cook
+              </h4>
               <small className="prep-info--text">{post.cookTime} mins</small>
             </div>
             <div className="prep-info">
-              <h4 className="prep-info--title">Serves</h4>
-              {iconSolid("faUserFriends", "secondary")}
+              <h4 className="prep-info--title">
+                {iconSolid("faUserFriends", { margin: "0 .5rem" })}
+                Serves
+              </h4>
               <small className="prep-info--text">{post.serves} people</small>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import styled from "styled-components"
 import { colors } from "../utils/variables"
@@ -17,14 +18,16 @@ import {
   faUtensilSpoon,
   faFire,
   faUserFriends,
+  faArrowUp,
+  faBars,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons"
 
-const Circle = styled.span`
-  display: flex;
+const Circle = styled.a`
+  display: inline-flex;
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 5rem;
-  margin-left: 0.3rem;
 
   .icon {
     font-size: 1.5rem;
@@ -56,37 +59,68 @@ const secondary = {
   marginRight: ".3rem",
 }
 
-export const iconCircle = (icon, color) => {
-  icon === "faFacebookF"
-    ? (icon = faFacebookF)
-    : icon === "faTwitter"
-    ? (icon = faTwitter)
-    : icon === "faWhatsapp"
-    ? (icon = faWhatsapp)
-    : icon === "faInstagram"
-    ? (icon = faInstagram)
-    : (icon = "faShareAlt")
-    ? (icon = faShareAlt)
-    : (icon = null)
+export const iconCircle = (icon, variant, style) => {
+  let socialLink
+  let socialIcon
 
+  switch (icon) {
+    case "faFacebookF":
+      socialIcon = faFacebookF
+      socialLink = "https://www.facebook.com/"
+      break
+    case "faTwitter":
+      socialIcon = faTwitter
+      socialLink = "https://www.twitter.com/"
+      break
+    case "faWhatsapp":
+      socialIcon = faWhatsapp
+      socialLink = "https://www.whatsapp.com/"
+      break
+    case "faInstagram":
+      socialIcon = faInstagram
+      socialLink = "https://www.instagram.com/"
+      break
+    case "faArrowUp":
+      socialIcon = faArrowUp
+      break
+    case "faShareAlt":
+      socialIcon = faShareAlt
+      break
+    default:
+      break
+  }
   return (
-    <Circle className={color}>
-      <FontAwesomeIcon icon={icon} className="icon" />
+    <Circle className={variant} style={style} href={socialLink} target="_blank">
+      <FontAwesomeIcon icon={socialIcon} className="icon" />
     </Circle>
   )
 }
-export const iconSolid = (icon, color) => {
-  icon === "clock"
-    ? (icon = faClock)
-    : icon === "faSignal"
-    ? (icon = faSignal)
-    : icon === "faUtensilSpoon"
-    ? (icon = faUtensilSpoon)
-    : icon === "faFire"
-    ? (icon = faFire)
-    : icon === "faUserFriends"
-    ? (icon = faUserFriends)
-    : (icon = null)
-  color === "secondary" ? (color = secondary) : (color = primary)
-  return <FontAwesomeIcon icon={icon} style={color} />
+export const iconSolid = (icon, style) => {
+  switch (icon) {
+    case "faClock":
+      icon = faClock
+      break
+    case "faSignal":
+      icon = faSignal
+      break
+    case "faUtensilSpoon":
+      icon = faUtensilSpoon
+      break
+    case "faFire":
+      icon = faFire
+      break
+    case "faUserFriends":
+      icon = faUserFriends
+      break
+    case "faBars":
+      icon = faBars
+      break
+    case "faTimes":
+      icon = faTimes
+      break
+    default:
+      break
+  }
+  // variant === "secondary" ? (variant = secondary) : (variant = primary)
+  return <FontAwesomeIcon icon={icon} style={style} />
 }
