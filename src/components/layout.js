@@ -27,16 +27,16 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
-      <div
+
+      <main
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `${location.pathname === "/" ? "0 1.0875rem 1.45rem" : 0}`,
         }}
       >
-        <main>{children}</main>
-        <Footer siteTitle={data.site.siteMetadata.title} />
-      </div>
+        {children}
+      </main>
+      <Footer siteTitle={data.site.siteMetadata.title} />
     </>
   )
 }
