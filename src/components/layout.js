@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Footer from "./footer"
 import "./global.css"
 
 const Layout = ({ children, location }) => {
@@ -26,15 +27,17 @@ const Layout = ({ children, location }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} location={location} />
-      <div
+
+      <main
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `${location.pathname === "/" ? "0 1.0875rem 1.45rem" : 0}`,
+          padding: `${location.pathname === "/" ? "6rem 1rem" : "4rem 0"}`,
         }}
       >
-        <main>{children}</main>
-      </div>
+        {children}
+      </main>
+      <Footer siteTitle={data.site.siteMetadata.title} />
     </>
   )
 }

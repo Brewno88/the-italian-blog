@@ -15,7 +15,6 @@ const PostCard = ({
   createdAt,
   thumbnail,
 }) => {
-  console.log(colors)
   return (
     <Article className="card">
       <Img
