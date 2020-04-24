@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 
 import styled from "styled-components"
 import { colors } from "../utils/variables"
-import Tag from "../components/tag"
+import Tag from "./tag-badge"
 
 const PostCard = ({
   id,
@@ -31,7 +31,7 @@ const PostCard = ({
         <div className="bottom">
           <div className="tags">
             {tags.map((tag, index) => (
-              <Tag key={index}>{`#${tag}`}</Tag>
+              <Tag key={index} tag={tag}>{`#${tag}`}</Tag>
             ))}
           </div>
           <Link className="read-more" to={`/${slug}`}>

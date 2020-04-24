@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 // others
 import styled from "styled-components"
-import Tag from "../components/tag"
+import Tag from "../components/tag-badge"
 import Layout from "../components/layout"
 import { colors } from "../utils/variables"
 import { iconCircle, iconSolid } from "../components/icons"
@@ -75,7 +75,7 @@ const PostPage = ({ data, location }) => {
           {/************** TAGS **************/}
           <div className="tags">
             {post.tags.map((tag, index) => (
-              <Tag key={index}>{`#${tag}`}</Tag>
+              <Tag key={index} tag={tag}>{`#${tag}`}</Tag>
             ))}
           </div>
           {/************** TITLE **************/}
@@ -182,6 +182,9 @@ const Wrap = styled.div`
         margin-left: 0.3rem;
       }
     }
+  }
+  .tags {
+    display: flex;
   }
   .socials {
     display: flex;
