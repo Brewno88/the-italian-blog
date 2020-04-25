@@ -45,7 +45,7 @@ const PostCard = ({
 
 //* styled-component < 💅>
 const Article = styled.div`
-  margin-bottom: 2rem;
+  margin: 0 1rem 2rem 1rem;
   border: solid 3px ${colors.secondary};
   border-radius: 1rem;
   z-index: 2;

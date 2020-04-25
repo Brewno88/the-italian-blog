@@ -32,7 +32,11 @@ const Layout = ({ children, location }) => {
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `${location.pathname === "/" ? "6rem 1rem" : "4rem 0"}`,
+          padding: `${
+            location.pathname === "/" || location.pathname === "/tags"
+              ? "6rem 1rem"
+              : "4rem 0"
+          }`,
         }}
       >
         {children}
