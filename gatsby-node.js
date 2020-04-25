@@ -1,3 +1,4 @@
+const _ = require("lodash")
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
@@ -13,6 +14,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const templates = {
     postPage: "./src/templates/post-page-template.js",
     allTags: "./src/templates/all-tags-template.js",
+    tagPage: "./src/templates/tag-page-template.js",
   }
 
   const posts = result.data.allContentfulBlogPost.nodes
@@ -41,15 +43,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   })
   // allTag have  duplicate so only create array with unique tags
   let uniqueTags = [...new Set(allTags)]
-  console.log(uniqueTags)
 
   // //***** CREATE OBJECT THAT COUNT EACH TAG *******//
   let tagCounts = {}
   posts.map(post =>
     post.tags.forEach(tag => (tagCounts[tag] = (tagCounts[tag] || 0) + 1))
   )
+  uniqueTags.forEach(tag => {
+    actions.createPage({
+      path: `/tags/${_.kebabCase(tag)}/`,
+      component: require.resolve(templates.tagPage),
+      context: { tag },
+    })
+  })
+  // Create Tags Page
   actions.createPage({
-    path: "/tags",
+    path: `/tags/`,
     component: require.resolve(templates.allTags),
     context: { uniqueTags, tagCounts },
   })
