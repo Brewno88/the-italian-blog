@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import styled from "styled-components"
-import { colors } from "../utils/variables"
+import { colors } from "./variables"
 // Font-Awesome
 import {
   faWhatsapp,

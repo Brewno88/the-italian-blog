@@ -3,7 +3,7 @@ import React, { useState } from "react"
 
 import { colors } from "../utils/variables"
 import MenuIcon from "./menu-icon.js"
-import { iconSolid } from "../components/icons"
+import { iconSolid } from "../utils/icons"
 import SideNavbar from "./side-navbar"
 
 const Header = ({ siteTitle, location }) => {
@@ -51,6 +51,7 @@ const Header = ({ siteTitle, location }) => {
             {siteTitle}
           </Link>
         </h1>
+        <Link to="/tags">Tags</Link>
         <MenuIcon
           isSideMenuOpen={isSideMenuOpen}
           onMenuIcon={e => setIsSideMenuOpen(e)}

@@ -6,7 +6,7 @@ import styled from "styled-components"
 import Tag from "../components/tag-badge"
 import Layout from "../components/layout"
 import { colors } from "../utils/variables"
-import { iconCircle, iconSolid } from "../components/icons"
+import { iconCircle, iconSolid } from "../utils/icons"
 // contentful
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types"

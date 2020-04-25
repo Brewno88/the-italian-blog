@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { colors } from "../utils/variables"
-import { iconSolid, iconCircle } from "../components/icons"
+import { iconSolid, iconCircle } from "../utils/icons"
 
 const SideNavbar = ({ ...props }) => {
   return (

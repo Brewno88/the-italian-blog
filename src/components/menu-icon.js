@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { iconSolid } from "./icons"
+import { iconSolid } from "../utils/icons"
 import styled from "styled-components"
 
 const MenuIcon = ({ ...props }) => {

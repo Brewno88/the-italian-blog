@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { colors } from "../utils/variables"
-import { iconCircle } from "../components/icons"
+import { iconCircle } from "../utils/icons"
 
 const Footer = ({ siteTitle }) => {
   return (
