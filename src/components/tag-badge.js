@@ -2,10 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { colors } from "../utils/variables"
-import { slugify } from "../utils/slugify"
+import _ from "lodash"
 
 const Tag = ({ children, tag }) => {
-  return <Wrap to={`/tag/${slugify(tag)}`}>{children}</Wrap>
+  return <Wrap to={`/tags/${_.kebabCase(tag)}`}>{children}</Wrap>
 }
 
 //* styled-component < 💅>
