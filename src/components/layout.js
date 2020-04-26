@@ -1,11 +1,11 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
 import "./global.css"
 import { getUniqueTags } from "../utils/functions"
+import { colors } from "../utils/variables"
 
 const Layout = ({ children, location, posts }) => {
   const data = useStaticQuery(graphql`
@@ -32,6 +32,7 @@ const Layout = ({ children, location, posts }) => {
 
       <main
         style={{
+          background: colors.ternary,
           margin: `0 auto`,
           maxWidth: 960,
           padding: `${
