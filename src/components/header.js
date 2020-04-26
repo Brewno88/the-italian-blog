@@ -5,8 +5,10 @@ import { colors } from "../utils/variables"
 import MenuIcon from "./menu-icon.js"
 import { iconSolid } from "../utils/icons"
 import SideNavbar from "./side-navbar"
+import TagsDropdown from "./TagsDropdown"
+import { getTags } from "../templates/all-tags-template"
 
-const Header = ({ siteTitle, location }) => {
+const Header = ({ siteTitle, location, uniqueTags }) => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
 
   let sideNavbar
@@ -51,12 +53,12 @@ const Header = ({ siteTitle, location }) => {
             {siteTitle}
           </Link>
         </h1>
-        <Link to="/tags">Tags</Link>
-        <MenuIcon
+        {/* <MenuIcon
           isSideMenuOpen={isSideMenuOpen}
           onMenuIcon={e => setIsSideMenuOpen(e)}
-        />
-        {sideNavbar}
+          />
+        {sideNavbar} */}
+        <TagsDropdown tagsArray={uniqueTags} />
       </div>
     </header>
   )
