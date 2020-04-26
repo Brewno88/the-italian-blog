@@ -45,11 +45,12 @@ export const query = graphql`
   }
 `
 
-const PostPage = ({ data, location }) => {
+const PostPage = ({ data, location, pageContext }) => {
   const post = data.contentfulBlogPost
+  const { posts, slug } = pageContext
   return (
     <Wrap>
-      <Layout location={location}>
+      <Layout location={location} posts={posts}>
         {/************** COVER IMAGE **************/}
         <Img
           className="hero"
