@@ -8,8 +8,10 @@ import SEO from "../components/seo"
 const IndexPage = ({ data, location }) => {
   const posts = data.posts.nodes
 
+  // console.log(posts)
+
   return (
-    <Layout location={location}>
+    <Layout location={location} posts={posts}>
       <SEO title="Home" />
       {posts.map((post, i) => (
         <PostCard

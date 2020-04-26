@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import TagCard from "../components/tag-card"
+import TagCard from "../components/TagCard"
 import { colors } from "../utils/variables"
 
 import Layout from "../components/layout"
@@ -26,10 +26,10 @@ export const getTags = graphql`
 
 const SecondPage = ({ data, location, pageContext }) => {
   const allPosts = data.allContentfulBlogPost.nodes
-  const { uniqueTags, tagCounts } = pageContext
+  const { uniqueTags, tagCounts, posts } = pageContext
 
   return (
-    <Layout location={location}>
+    <Layout location={location} posts={posts}>
       <SEO title="Tags" />
       {uniqueTags.map((tag, index) => {
         return (

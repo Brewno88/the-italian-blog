@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -12,8 +5,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Footer from "./footer"
 import "./global.css"
+import { getUniqueTags } from "../utils/functions"
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location, posts }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,9 +18,17 @@ const Layout = ({ children, location }) => {
     }
   `)
 
+  //***** CREATE ARRAY WITH UNIQUE TAGS *******//
+  let uniqueTags = getUniqueTags(posts)
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} location={location} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        location={location}
+        // posts={posts}
+        uniqueTags={uniqueTags}
+      />
 
       <main
         style={{

@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import TagCard from "../components/tag-card"
+import TagCard from "../components/TagCard"
 import _ from "lodash"
 import PostCard from "../components/post-card"
 
@@ -34,13 +34,13 @@ export const query = graphql`
   }
 `
 
-const TagPage = ({ data, location }) => {
+const TagPage = ({ data, location, pageContext }) => {
   const tagPosts = data.allContentfulBlogPost.nodes
-  console.log(query)
+  const { tag, posts } = pageContext
 
   return (
     <Wrap>
-      <Layout location={location}>
+      <Layout location={location} posts={posts}>
         {tagPosts.map((post, index) => {
           return (
             <PostCard

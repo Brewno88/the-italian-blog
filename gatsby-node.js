@@ -1,3 +1,5 @@
+const { getUniqueTags } = require("./src/utils/functions")
+
 const _ = require("lodash")
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
@@ -18,10 +20,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   }
 
   const posts = result.data.allContentfulBlogPost.nodes
-
   if (result.errors) {
     reporter.panic("Error loading lesson", JSON.stringify(result.errors))
   }
+  //***** CREATE ARRAY WITH UNIQUE TAGS *******//
+  let uniqueTags = getUniqueTags(posts)
 
   //* CREATE SINGLE POST PAGE
   posts.forEach(post => {
@@ -30,19 +33,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: require.resolve(templates.postPage),
       context: {
         slug: post.slug,
+        // uniqueTags,
+        posts,
       },
     })
   })
-
-  //***** CREATE ARRAY WITH ALL TAGS *******//
-  let allTags = []
-  posts.forEach(post => {
-    if (post.tags) {
-      return (allTags = [...allTags, ...post.tags])
-    }
-  })
-  // allTag have  duplicate so only create array with unique tags
-  let uniqueTags = [...new Set(allTags)]
 
   // //***** CREATE OBJECT THAT COUNT EACH TAG *******//
   let tagCounts = {}
@@ -53,13 +48,21 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     actions.createPage({
       path: `/tags/${_.kebabCase(tag)}/`,
       component: require.resolve(templates.tagPage),
-      context: { tag },
+      context: {
+        tag,
+        // uniqueTags,
+        posts,
+      },
     })
   })
   // Create Tags Page
   actions.createPage({
     path: `/tags/`,
     component: require.resolve(templates.allTags),
-    context: { uniqueTags, tagCounts },
+    context: {
+      uniqueTags,
+      tagCounts,
+      posts,
+    },
   })
 }
