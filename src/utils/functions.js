@@ -15,14 +15,17 @@
 const getUniqueTags = function (obj) {
   let allTags = []
 
-  obj.forEach(post => {
-    if (post.tags) {
-      return (allTags = [...allTags, ...post.tags])
-    }
-  })
-  // allTag have  duplicate so only create array with unique tags
-  let uniqueTags = [...new Set(allTags)]
-  return uniqueTags
+  if (obj) {
+    obj.forEach(post => {
+      if (post.tags) {
+        return (allTags = [...allTags, ...post.tags])
+      }
+    })
+    // allTag have  duplicate so only create array with unique tags
+    let uniqueTags = [...new Set(allTags)]
+    return uniqueTags
+  }
+  return []
 }
 
 module.exports = { getUniqueTags }

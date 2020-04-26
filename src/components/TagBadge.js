@@ -20,6 +20,10 @@ const Wrap = styled(Link)`
   cursor: pointer;
   align-self: center;
   text-decoration: none;
+  &:hover {
+    color: ${colors.secondary};
+    text-decoration: none;
+  }
 `
 
 export default Tag

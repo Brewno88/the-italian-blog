@@ -1,8 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
 import Layout from "../components/layout"
 import styled from "styled-components"
-import TagCard from "../components/TagCard"
 import _ from "lodash"
 import PostCard from "../components/PostCard"
 
@@ -36,7 +34,7 @@ export const query = graphql`
 
 const TagPage = ({ data, location, pageContext }) => {
   const tagPosts = data.allContentfulBlogPost.nodes
-  const { tag, posts } = pageContext
+  const { posts } = pageContext
 
   return (
     <Wrap>

@@ -1,25 +1,21 @@
 import { Link } from "gatsby"
-import React, { useState } from "react"
+import React from "react"
 
 import { colors } from "../utils/variables"
-import MenuIcon from "./MenuIcon.js"
-import { iconSolid } from "../utils/icons"
-import SideNavbar from "./SideNavbar"
+// import SideNavbar from "./SideNavbar"
 import TagsDropdown from "./TagsDropdown"
-import { getTags } from "../templates/all-tags-template"
 
 const Header = ({ siteTitle, location, uniqueTags }) => {
-  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
+  // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
 
-  let sideNavbar
-  if (isSideMenuOpen) {
-    sideNavbar = (
-      <SideNavbar
-        isSideMenuOpen={isSideMenuOpen}
-        onCloseIcon={e => setIsSideMenuOpen(e)}
-      />
-    )
-  }
+  // if (isSideMenuOpen) {
+  //   let sideNavbar = (
+  //     <SideNavbar
+  //       isSideMenuOpen={isSideMenuOpen}
+  //       onCloseIcon={e => setIsSideMenuOpen(e)}
+  //     />
+  //   )
+  // }
 
   return (
     <header

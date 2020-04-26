@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+// import styled from "styled-components"
 import { colors } from "../utils/variables"
 import { iconCircle } from "../utils/icons"
 
@@ -45,6 +45,6 @@ const Footer = ({ siteTitle }) => {
 }
 
 //* styled-component < 💅>
-const Wrap = styled.div``
+// const Wrap = styled.div``
 
 export default Footer

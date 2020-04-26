@@ -47,7 +47,7 @@ export const query = graphql`
 
 const PostPage = ({ data, location, pageContext }) => {
   const post = data.contentfulBlogPost
-  const { posts, slug } = pageContext
+  const { posts } = pageContext
   return (
     <Wrap>
       <Layout location={location} posts={posts}>

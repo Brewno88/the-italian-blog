@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import styled from "styled-components"
 import { colors } from "./variables"
@@ -45,19 +44,10 @@ const Circle = styled.a`
     background-color: ${colors.secondary};
 
     .icon {
-      color: ${colors.primary};
+      color: ${colors.ternary};
     }
   }
 `
-
-const primary = {
-  color: colors.primary,
-  marginRight: ".3rem",
-}
-const secondary = {
-  color: colors.secondary,
-  marginRight: ".3rem",
-}
 
 export const iconCircle = (icon, variant, style) => {
   let socialLink

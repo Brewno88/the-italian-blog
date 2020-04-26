@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import TagCard from "../components/TagCard"
 import { colors } from "../utils/variables"
 
 import Layout from "../components/layout"
@@ -25,7 +24,7 @@ export const getTags = graphql`
 `
 
 const SecondPage = ({ data, location, pageContext }) => {
-  const allPosts = data.allContentfulBlogPost.nodes
+  // const allPosts = data.allContentfulBlogPost.nodes
   const { uniqueTags, tagCounts, posts } = pageContext
 
   return (
