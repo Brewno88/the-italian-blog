@@ -57,9 +57,8 @@ const Wrap = styled(Dropdown)`
         background: ${colors.primary};
         color: ${colors.secondary};
       }
-
     }
-  }
+
 `
 
 export default TagsDropdown
