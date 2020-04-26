@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 
 import styled from "styled-components"
 import { colors } from "../utils/variables"
-import Tag from "./tag-badge"
+import Tag from "./TagBadge"
 
 const PostCard = ({
   id,

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 // others
 import styled from "styled-components"
-import Tag from "../components/tag-badge"
+import Tag from "../components/TagBadge"
 import Layout from "../components/layout"
 import { colors } from "../utils/variables"
 import { iconCircle, iconSolid } from "../utils/icons"

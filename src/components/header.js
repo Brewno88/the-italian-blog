@@ -2,9 +2,9 @@ import { Link } from "gatsby"
 import React, { useState } from "react"
 
 import { colors } from "../utils/variables"
-import MenuIcon from "./menu-icon.js"
+import MenuIcon from "./MenuIcon.js"
 import { iconSolid } from "../utils/icons"
-import SideNavbar from "./side-navbar"
+import SideNavbar from "./SideNavbar"
 import TagsDropdown from "./TagsDropdown"
 import { getTags } from "../templates/all-tags-template"
 

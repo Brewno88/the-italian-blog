@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import TagCard from "../components/TagCard"
 import _ from "lodash"
-import PostCard from "../components/post-card"
+import PostCard from "../components/PostCard"
 
 export const query = graphql`
   query($tag: String!) {
