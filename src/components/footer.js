@@ -33,12 +33,6 @@ const Footer = ({ siteTitle }) => {
         {iconCircle("faFacebookF", "secondary", { marginRight: ".5rem" })}
         {iconCircle("faInstagram", "secondary", { marginRight: ".5rem" })}
         {iconCircle("faTwitter", "secondary", { marginRight: ".5rem" })}
-        {iconCircle("faArrowUp", "secondary", {
-          position: "absolute",
-          right: 0,
-          top: "25%",
-          transform: "scale(1.2)",
-        })}
       </div>
     </footer>
   )

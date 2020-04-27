@@ -5,6 +5,7 @@ import Header from "./header"
 import Footer from "./footer"
 import "./global.css"
 import { colors } from "../utils/variables"
+import ScrollToTop from "./ScrollTopButton"
 
 const Layout = ({ children, location, posts }) => {
   const data = useStaticQuery(graphql`
@@ -38,6 +39,7 @@ const Layout = ({ children, location, posts }) => {
         }}
       >
         {children}
+        <ScrollToTop />
       </main>
       <Footer siteTitle={data.site.siteMetadata.title} />
     </>
