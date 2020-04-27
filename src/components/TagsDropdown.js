@@ -3,15 +3,22 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { colors } from "../utils/variables"
 import Dropdown from "react-bootstrap/Dropdown"
+import { countTags, sortTags } from "../utils/functions"
 
-const TagsDropdown = ({ tagsArray }) => {
+const TagsDropdown = ({ posts }) => {
+  // //***** CREATE OBJECT THAT COUNT EACH TAG *******//
+  let tagCounts = countTags(posts)
+
+  //***** CREATE ARRAY WITH UNIQUE TAGS *******//
+  let sortedTags = sortTags(tagCounts)
+
   return (
     <Wrap>
       <Dropdown.Toggle>Tags</Dropdown.Toggle>
       <Dropdown.Menu>
-        {tagsArray.map((tag, index) => (
-          <Link key={index} to={`/tags/${tag}`}>
-            {tag}
+        {sortedTags.map((tag, index) => (
+          <Link key={index} to={`/tags/${tag[0]}`}>
+            {tag[0]}: {tag[1]}
           </Link>
         ))}
       </Dropdown.Menu>
