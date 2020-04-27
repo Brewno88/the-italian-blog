@@ -5,7 +5,7 @@ import { colors } from "../utils/variables"
 // import SideNavbar from "./SideNavbar"
 import TagsDropdown from "./TagsDropdown"
 
-const Header = ({ siteTitle, location, uniqueTags }) => {
+const Header = ({ siteTitle, location, posts }) => {
   // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
 
   // if (isSideMenuOpen) {
@@ -54,7 +54,7 @@ const Header = ({ siteTitle, location, uniqueTags }) => {
           onMenuIcon={e => setIsSideMenuOpen(e)}
           />
         {sideNavbar} */}
-        <TagsDropdown tagsArray={uniqueTags} />
+        <TagsDropdown posts={posts} />
       </div>
     </header>
   )

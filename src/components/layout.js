@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Footer from "./footer"
 import "./global.css"
-import { getUniqueTags } from "../utils/functions"
 import { colors } from "../utils/variables"
 
 const Layout = ({ children, location, posts }) => {
@@ -18,16 +17,12 @@ const Layout = ({ children, location, posts }) => {
     }
   `)
 
-  //***** CREATE ARRAY WITH UNIQUE TAGS *******//
-  let uniqueTags = getUniqueTags(posts)
-
   return (
     <>
       <Header
         siteTitle={data.site.siteMetadata.title}
         location={location}
-        // posts={posts}
-        uniqueTags={uniqueTags}
+        posts={posts}
       />
 
       <main
