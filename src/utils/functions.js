@@ -1,31 +1,19 @@
-// const slugify = function (text) {
-//   return text
-//     .toString()
-//     .toLowerCase()
-//     .replace(/\s+/g, "-") // Replace spaces with -
-//     .replace(/[^\w-]+/g, "") // Remove all non-word chars
-//     .replace(/--+/g, "-") // Replace multiple - with single -
-//     .replace(/^-+/, "") // Trim - from start of text
-//     .replace(/-+$/, "") // Trim - from end of text
-// }
-
-// module.exports = { slugify }
-
-//***** CREATE ARRAY WITH ALL TAGS *******//
-const getUniqueTags = function (obj) {
-  let allTags = []
-
-  if (obj) {
-    obj.forEach(post => {
-      if (post.tags) {
-        return (allTags = [...allTags, ...post.tags])
-      }
-    })
-    // allTag have  duplicate so only create array with unique tags
-    let uniqueTags = [...new Set(allTags)]
-    return uniqueTags
-  }
-  return []
+// //***** CREATE OBJECT THAT COUNT EACH TAG *******//
+export const countTags = posts => {
+  let tagCounts = {}
+  posts.map(post =>
+    post.tags.forEach(tag => (tagCounts[tag] = (tagCounts[tag] || 0) + 1))
+  )
+  return tagCounts
 }
 
-module.exports = { getUniqueTags }
+export const sortTags = notSortTags => {
+  let sort = Object.entries(notSortTags).sort((a, b) => b[1] - a[1])
+  return sort
+}
+
+export const getUniqueTags = tagsObj => {
+  const uniqueTags = Object.keys(tagsObj)
+
+  return uniqueTags
+}
