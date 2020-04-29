@@ -4,7 +4,8 @@ import Img from "gatsby-image"
 
 import styled from "styled-components"
 import { colors } from "../utils/variables"
-import Tag from "./TagBadge"
+
+import Badge from "./Badge"
 
 const PostCard = ({
   id,
@@ -31,11 +32,18 @@ const PostCard = ({
         <div className="bottom">
           <div className="tags">
             {tags.map((tag, index) => (
-              <Tag key={index} tag={tag}>{`#${tag}`}</Tag>
+              <Badge
+                theme="primary"
+                size="md"
+                key={index}
+                tag={tag}
+              >{`#${tag}`}</Badge>
             ))}
           </div>
           <Link className="read-more" to={`/${slug}`}>
-            <button className="btn">Read more...</button>
+            <Badge size="bg" theme="secondary" className="">
+              Read more...
+            </Badge>
           </Link>
         </div>
       </div>
@@ -58,32 +66,26 @@ const Article = styled.div`
       font-size: 2rem;
       margin-bottom: 0.5rem;
       a {
-        color: ${colors.text};
-        text-decoration: none;
+        color: ${colors.secondary};
+        &:hover {
+          color: ${colors.primary};
+        }
       }
     }
     .date {
       font-style: italic;
       margin-bottom: 1rem;
+      font-size: 0.7rem;
     }
     .description {
       margin-top: 0.5rem;
+      font-size: 1rem;
     }
     .bottom {
       display: flex;
       justify-content: space-between;
       .tags {
         display: flex;
-      }
-      .btn {
-        color: ${colors.background};
-        background: ${colors.secondary};
-        cursor: pointer;
-        border-radius: 6rem;
-        border: none;
-        padding: 0.2rem 0.3rem;
-        font-size: 0.7rem;
-        font-weight: bold;
       }
     }
   }
