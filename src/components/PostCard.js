@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 import styled from "styled-components"
+import _ from "lodash"
 import { colors } from "../utils/variables"
 
 import Badge from "./Badge"
@@ -32,19 +33,16 @@ const PostCard = ({
         <div className="bottom">
           <div className="tags">
             {tags.map((tag, index) => (
-              <Badge
-                theme="primary"
-                size="md"
-                key={index}
-                tag={tag}
-              >{`#${tag}`}</Badge>
+              <Badge theme="primary" size="md" key={index} tag={tag}>
+                <Link to={`/tags/${_.kebabCase(tag)}`}>{`#${tag}`}</Link>
+              </Badge>
             ))}
           </div>
-          <Link className="read-more" to={`/${slug}`}>
-            <Badge size="bg" theme="secondary" className="">
+          <Badge size="bg" theme="secondary" className="">
+            <Link className="read-more" to={`/${slug}`}>
               Read more...
-            </Badge>
-          </Link>
+            </Link>
+          </Badge>
         </div>
       </div>
     </Article>

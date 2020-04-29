@@ -1,8 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 // others
 import styled from "styled-components"
+import _ from "lodash"
 import Badge from "../components/Badge"
 import Layout from "../components/layout"
 import { colors, typography, appearance } from "../utils/variables"
@@ -76,7 +77,9 @@ const PostPage = ({ data, location, pageContext }) => {
           {/************** TAGS **************/}
           <div className="tags">
             {post.tags.map((tag, index) => (
-              <Badge theme="primary" key={index} tag={tag}>{`#${tag}`}</Badge>
+              <Badge theme="primary" key={index} tag={tag}>
+                <Link to={`/tags/${_.kebabCase(tag)}`}>{`#${tag}`}</Link>
+              </Badge>
             ))}
           </div>
           {/************** TITLE **************/}
@@ -178,7 +181,7 @@ const Wrap = styled.div`
     position: sticky;
     top: 4rem;
     background: ${colors.secondary};
-    padding: 0.7rem;
+    padding: 0.7rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -195,12 +198,13 @@ const Wrap = styled.div`
   }
   .tags {
     display: flex;
+    padding: 0 1rem;
   }
   .socials {
     display: flex;
   }
   article {
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
     margin: auto;
     width: ${appearance.articleWidth};
     .title {
@@ -231,7 +235,15 @@ const Wrap = styled.div`
       list-style: none;
     }
     ul {
-      padding: 0;
+      padding-left: 1rem;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+      padding: 0 1rem;
     }
   }
   img {

@@ -7,7 +7,7 @@ import _ from "lodash"
 const Badge = ({ children, tag, theme, size }) => {
   return (
     <MyBadge theme={theme} size={size}>
-      <Link to={`/tags/${_.kebabCase(tag)}`}>{children}</Link>
+      {children}
     </MyBadge>
   )
 }
@@ -18,7 +18,7 @@ const MyBadge = styled.button`
     props.theme === "primary" ? colors.primary : colors.secondary};
   border: none;
   font-size: 0.8rem;
-  margin: 0 0.2rem;
+  margin-right: 0.3rem;
   font-weight: bold;
   border-radius: 3rem;
   padding: 0.4rem;
