@@ -4,45 +4,39 @@ import styled from "styled-components"
 import { colors, animation } from "../utils/variables"
 import _ from "lodash"
 
-const Badge = ({ children, tag, theme, size }) => {
+const Badge = ({ children, to, theme, size }) => {
   return (
-    <MyBadge theme={theme} size={size}>
+    <MyBadge to={to} theme={theme} size={size}>
       {children}
     </MyBadge>
   )
 }
 
 //* styled-component < 💅>
-const MyBadge = styled.button`
+const MyBadge = styled(Link)`
+  display: flex;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: ${props =>
+    props.theme === "primary" ? colors.secondary : colors.primary};
   background: ${props =>
     props.theme === "primary" ? colors.primary : colors.secondary};
+  padding: 0.4rem 0.7rem;
   border: none;
-  font-size: 0.8rem;
-  margin-right: 0.3rem;
-  font-weight: bold;
+  margin-right: 1rem;
   border-radius: 3rem;
-  padding: 0.4rem;
   cursor: pointer;
   align-self: center;
   text-decoration: none;
   transition: ${animation.transition.hover};
-  a {
+  text-shadow: none;
+  &:hover {
     color: ${props =>
+      props.theme === "primary" ? colors.primary : colors.secondary};
+    background: ${props =>
       props.theme === "primary" ? colors.secondary : colors.primary};
     text-shadow: none;
     transition: ${animation.transition.hover};
-  }
-  &:hover {
-    background: ${props =>
-      props.theme === "primary" ? colors.secondary : colors.primary};
-    transition: ${animation.transition.hover};
-
-    a {
-      color: ${props =>
-        props.theme === "primary" ? colors.primary : colors.secondary};
-      text-shadow: none;
-      transition: ${animation.transition.hover};
-    }
   }
 `
 

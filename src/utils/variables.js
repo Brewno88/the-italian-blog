@@ -23,6 +23,6 @@ export const keyframe = {
 
 export const animation = {
   transition: {
-    hover: "all .3s linear",
+    hover: "all .2s linear",
   },
 }

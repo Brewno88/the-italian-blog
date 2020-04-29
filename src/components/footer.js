@@ -8,13 +8,13 @@ const Footer = ({ siteTitle }) => {
   return (
     <MyFooter>
       <div className="container">
-        <h3>
-          <Link to="/">{siteTitle}</Link>
-        </h3>
+        <Link to="/">
+          <h3>{siteTitle}</h3>
+        </Link>
         <div className="social-medias">
-          {iconCircle("faFacebookF", "secondary", { marginRight: ".5rem" })}
-          {iconCircle("faInstagram", "secondary", { marginRight: ".5rem" })}
-          {iconCircle("faTwitter", "secondary", { marginRight: ".5rem" })}
+          {iconCircle("faFacebookF", "secondary", { marginRight: "1rem" })}
+          {iconCircle("faInstagram", "secondary", { marginRight: "1rem" })}
+          {iconCircle("faTwitter", "secondary", { marginRight: "1rem" })}
         </div>
       </div>
     </MyFooter>
@@ -24,17 +24,19 @@ const Footer = ({ siteTitle }) => {
 //* styled-component < 💅>
 const MyFooter = styled.footer`
   background: ${colors.primary};
-  padding: 1rem 1rem;
+  padding: 2rem 2rem;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   .container {
     margin: 0 auto;
     max-width: ${appearance.headerWidth}px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0;
     h3 {
       margin: 0;
-    }
-    a {
       color: ${colors.secondary};
       text-shadow: ${typography.shadowTernary};
       &:hover {

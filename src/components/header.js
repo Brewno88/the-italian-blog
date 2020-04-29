@@ -21,9 +21,9 @@ const Header = ({ siteTitle, location, posts }) => {
   return (
     <MyHeader location={location}>
       <div className="header-content">
-        <h1>
-          <Link to="/">{siteTitle}</Link>
-        </h1>
+        <Link to="/">
+          <h1>{siteTitle}</h1>
+        </Link>
         {/* <MenuIcon
           isSideMenuOpen={isSideMenuOpen}
           onMenuIcon={e => setIsSideMenuOpen(e)}
@@ -40,12 +40,13 @@ const MyHeader = styled.header`
   margin-bottom: ${props => (props.location.pathname === "/" ? "1.45rem" : 0)};
   position: fixed;
   width: 100%;
+  top: 0;
   z-index: 5;
+  padding: 2rem 2rem;
   .header-content {
     margin: 0 auto;
     max-width: ${appearance.headerWidth}px;
     height: 4rem;
-    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,13 +54,11 @@ const MyHeader = styled.header`
 
   h1 {
     margin: 0;
-    a {
-      color: ${colors.secondary};
-      text-shadow: ${typography.shadowTernary};
-      &:hover {
-        color: ${colors.ternary};
-        text-shadow: ${typography.shadowSecondary};
-      }
+    color: ${colors.secondary};
+    text-shadow: ${typography.shadowTernary};
+    &:hover {
+      color: ${colors.ternary};
+      text-shadow: ${typography.shadowSecondary};
     }
   }
 `

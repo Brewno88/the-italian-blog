@@ -56,7 +56,7 @@ const PostPage = ({ data, location, pageContext }) => {
         <Img
           className="hero"
           fluid={post.thumbnail.fluid}
-          style={{ height: "20rem" }}
+          style={{ height: "40rem" }}
         />
         {/************** SUB--HEADER **************/}
         <div className="sub-header">
@@ -66,22 +66,27 @@ const PostPage = ({ data, location, pageContext }) => {
           </div>
 
           <div className="socials">
-            {iconCircle("faShareAlt", "primary", { marginLeft: ".5rem" })}
-            {iconCircle("faFacebookF", "primary", { marginLeft: ".5rem" })}
-            {iconCircle("faWhatsapp", "primary", { marginLeft: ".5rem" })}
-            {iconCircle("faTwitter", "primary", { marginLeft: ".5rem" })}
+            {iconCircle("faShareAlt", "primary", { marginLeft: "1rem" })}
+            {iconCircle("faFacebookF", "primary", { marginLeft: "1rem" })}
+            {iconCircle("faWhatsapp", "primary", { marginLeft: "1rem" })}
+            {iconCircle("faTwitter", "primary", { marginLeft: "1rem" })}
           </div>
+        </div>
+        {/************** TAGS **************/}
+        <div className="tags">
+          {post.tags.map((tag, index) => (
+            <Badge
+              to={`/tags/${_.kebabCase(tag)}`}
+              theme="primary"
+              key={index}
+              tag={tag}
+            >
+              {`#${tag}`}
+            </Badge>
+          ))}
         </div>
         {/************** MAIN **************/}
         <article className="main-content">
-          {/************** TAGS **************/}
-          <div className="tags">
-            {post.tags.map((tag, index) => (
-              <Badge theme="primary" key={index} tag={tag}>
-                <Link to={`/tags/${_.kebabCase(tag)}`}>{`#${tag}`}</Link>
-              </Badge>
-            ))}
-          </div>
           {/************** TITLE **************/}
           <h1 className="title">{post.title}</h1>
           <p className="description">{post.description}</p>
@@ -176,46 +181,42 @@ const PostPage = ({ data, location, pageContext }) => {
 
 //* styled-component < 💅>
 const Wrap = styled.div`
-  font-size: 1.1rem;
   .sub-header {
     position: sticky;
-    top: 4rem;
+    top: 8rem;
     background: ${colors.secondary};
-    padding: 0.7rem 1rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     &--date {
       display: flex;
       align-items: center;
-      font-size: 1.2rem;
+      font-size: 2rem;
       color: ${colors.primary};
       small {
-        margin-left: 0.3rem;
+        margin-left: 1rem;
+        font-size: 1.5rem;
       }
     }
   }
   .tags {
     display: flex;
-    padding: 0 1rem;
+    padding: 0 2rem;
   }
   .socials {
     display: flex;
   }
   article {
-    /* padding: 0 1rem; */
     margin: auto;
     width: ${appearance.articleWidth};
-    .title {
-      margin-top: 1rem;
-    }
     .prep-info-wrapper {
       background-color: ${colors.primary};
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       margin-bottom: 1rem;
       .prep-info {
         width: 20%;
@@ -236,6 +237,7 @@ const Wrap = styled.div`
     }
     ul {
       padding-left: 2rem;
+      margin-bottom: 1.5rem;
     }
     h1,
     h2,
@@ -248,6 +250,7 @@ const Wrap = styled.div`
   }
   img {
     width: 100%;
+    margin: 2rem 0;
   }
 `
 

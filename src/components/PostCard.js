@@ -25,23 +25,32 @@ const PostCard = ({
         style={{ borderRadius: ".8rem .8rem 0 0" }}
       />
       <div className="information">
-        <h2 className="title">
-          <Link to={`/${slug}`}>{title}</Link>
-        </h2>
+        <Link to={`/${slug}`}>
+          <h2 className="title">{title}</h2>
+        </Link>
         <small className="date">{createdAt}</small>
         <p className="description">{description}</p>
         <div className="bottom">
           <div className="tags">
             {tags.map((tag, index) => (
-              <Badge theme="primary" size="md" key={index} tag={tag}>
-                <Link to={`/tags/${_.kebabCase(tag)}`}>{`#${tag}`}</Link>
+              <Badge
+                key={index}
+                to={`/tags/${_.kebabCase(tag)}`}
+                theme="primary"
+                size="md"
+                tag={tag}
+              >
+                {`#${tag}`}
               </Badge>
             ))}
           </div>
-          <Badge size="bg" theme="secondary" className="">
-            <Link className="read-more" to={`/${slug}`}>
-              Read more...
-            </Link>
+          <Badge
+            size="bg"
+            theme="secondary"
+            className="read-more"
+            to={`/${slug}`}
+          >
+            Read more...
           </Badge>
         </div>
       </div>
@@ -65,7 +74,6 @@ const Article = styled.div`
   .information {
     padding: 1rem 1rem 1rem 1rem;
     .title {
-      font-size: 2rem;
       margin-bottom: 0.5rem;
       a {
         color: ${colors.secondary};
@@ -75,13 +83,10 @@ const Article = styled.div`
       }
     }
     .date {
-      font-style: italic;
       margin-bottom: 1rem;
-      font-size: 0.7rem;
     }
     .description {
       margin-top: 0.5rem;
-      font-size: 1rem;
     }
     .bottom {
       display: flex;
