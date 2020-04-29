@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle, styled } from "styled-components"
 
 import Header from "./header"
 import Footer from "./footer"
@@ -33,11 +33,7 @@ const Layout = ({ children, location, posts }) => {
           background: colors.ternary,
           margin: `0 auto`,
           maxWidth: appearance.headerWidth,
-          padding: `${
-            location.pathname === "/" || location.pathname === "/tags"
-              ? "6rem 1rem"
-              : "4rem 0"
-          }`,
+          padding: "4rem 0",
         }}
       >
         <ScrollToTop />
@@ -49,12 +45,23 @@ const Layout = ({ children, location, posts }) => {
 }
 
 const GlobalStyle = createGlobalStyle`
+*, *:after, *:before{
+  box-sizing: border-box;
+}
+
 html{
   font-family: sans-serif;
+
 }
 body{
   background: ${colors.ternary};
   font-size: 62.5%;
+
+
+}
+
+main{
+  flex: 1 0 auto;
 }
 a{
   font-weight: bold;
