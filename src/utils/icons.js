@@ -24,12 +24,12 @@ import {
 
 const Circle = styled.a`
   display: inline-flex;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 3.8rem;
+  height: 3.8rem;
   border-radius: 5rem;
 
   .icon {
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     margin: auto;
   }
   &.primary {

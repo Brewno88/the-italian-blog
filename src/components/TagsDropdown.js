@@ -32,7 +32,10 @@ const Wrap = styled(Dropdown)`
     color: ${colors.ternary};
     background: ${colors.secondary};
     border: none;
-    padding: 0.2rem 0.44rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 2rem;
+
     &:hover,
     &:active {
       background: ${colors.secondary};
@@ -48,16 +51,23 @@ const Wrap = styled(Dropdown)`
   }
   .dropdown-menu {
     background: ${colors.secondary};
-  }
-  a {
-    color: ${colors.primary};
-    display: block;
-    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    a {
+      color: ${colors.primary};
+      padding: 0.7rem 0;
+      text-shadow: none;
+      display: block;
+      font-size: 1.5rem;
+      transition: none;
 
-    &:hover {
-      text-decoration: none;
-      background: ${colors.primary};
-      color: ${colors.secondary};
+      width: 100%;
+      padding: 0.25rem 1.5rem;
+      white-space: nowrap;
+      &:hover {
+        background: ${colors.primary};
+
+        color: ${colors.secondary};
+      }
     }
   }
 `

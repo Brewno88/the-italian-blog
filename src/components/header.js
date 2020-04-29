@@ -1,7 +1,8 @@
 import { Link } from "gatsby"
 import React from "react"
+import styled from "styled-components"
 
-import { colors } from "../utils/variables"
+import { colors, typography, appearance } from "../utils/variables"
 // import SideNavbar from "./SideNavbar"
 import TagsDropdown from "./TagsDropdown"
 
@@ -18,37 +19,11 @@ const Header = ({ siteTitle, location, posts }) => {
   // }
 
   return (
-    <header
-      style={{
-        background: `${colors.primary}`,
-        marginBottom: `${location.pathname === "/" ? "1.45rem" : 0}`,
-        position: "fixed",
-        width: "100%",
-        zIndex: 5,
-      }}
-    >
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          height: "4rem",
-          padding: "0 1rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `${colors.text}`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
+    <MyHeader location={location}>
+      <div className="header-content">
+        <Link to="/">
+          <h1>{siteTitle}</h1>
+        </Link>
         {/* <MenuIcon
           isSideMenuOpen={isSideMenuOpen}
           onMenuIcon={e => setIsSideMenuOpen(e)}
@@ -56,8 +31,36 @@ const Header = ({ siteTitle, location, posts }) => {
         {sideNavbar} */}
         <TagsDropdown posts={posts} />
       </div>
-    </header>
+    </MyHeader>
   )
 }
+
+const MyHeader = styled.header`
+  background: ${colors.primary};
+  margin-bottom: ${props => (props.location.pathname === "/" ? "1.45rem" : 0)};
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  padding: 2rem 2rem;
+  .header-content {
+    margin: 0 auto;
+    max-width: ${appearance.headerWidth}px;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 0;
+    color: ${colors.secondary};
+    text-shadow: ${typography.shadowTernary};
+    &:hover {
+      color: ${colors.ternary};
+      text-shadow: ${typography.shadowSecondary};
+    }
+  }
+`
 
 export default Header
