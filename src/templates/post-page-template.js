@@ -235,7 +235,7 @@ const Wrap = styled.div`
       list-style: none;
     }
     ul {
-      padding-left: 1rem;
+      padding-left: 2rem;
     }
     h1,
     h2,
@@ -243,7 +243,7 @@ const Wrap = styled.div`
     h4,
     h5,
     p {
-      padding: 0 1rem;
+      padding: 0 2rem;
     }
   }
   img {
