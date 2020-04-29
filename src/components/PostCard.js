@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 
 import styled from "styled-components"
 import _ from "lodash"
-import { colors } from "../utils/variables"
+import { colors, appearance } from "../utils/variables"
 
 import Badge from "./Badge"
 
@@ -51,10 +51,14 @@ const PostCard = ({
 
 //* styled-component < 💅>
 const Article = styled.div`
-  margin: 0 1rem 2rem 1rem;
+  margin: 2rem auto 0 auto;
+  max-width: ${appearance.articleWidth}px;
   border: solid 3px ${colors.secondary};
   border-radius: 1rem;
   z-index: 2;
+  @media (max-width: 770px) {
+    margin: 2rem 2rem;
+  }
   .thumbnail {
     height: 15rem;
   }
