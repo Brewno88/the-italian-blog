@@ -21,6 +21,8 @@ const ScrollToTop = () => {
       <span onClick={scrollToTop}>
         {iconCircle("faArrowUp", "primary", {
           display: scroll > 500 ? "flex" : "none",
+          width: "3rem",
+          height: "3rem",
         })}
       </span>
     </Wrap>
@@ -32,12 +34,15 @@ const Wrap = styled.div`
   position: fixed;
   cursor: pointer;
   right: 1.5rem;
-  bottom: 1.5rem;
+  bottom: 5rem;
   z-index: 3;
   &:hover {
     a {
       transform: translateY(-0.5rem);
     }
+  }
+  .icon {
+    font-size: 2.3rem;
   }
 `
 
