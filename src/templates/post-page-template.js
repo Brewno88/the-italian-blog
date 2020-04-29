@@ -3,9 +3,9 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 // others
 import styled from "styled-components"
-import Tag from "../components/TagBadge"
+import Badge from "../components/Badge"
 import Layout from "../components/layout"
-import { colors } from "../utils/variables"
+import { colors, typography, appearance } from "../utils/variables"
 import { iconCircle, iconSolid } from "../utils/icons"
 // contentful
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
@@ -76,7 +76,7 @@ const PostPage = ({ data, location, pageContext }) => {
           {/************** TAGS **************/}
           <div className="tags">
             {post.tags.map((tag, index) => (
-              <Tag key={index} tag={tag}>{`#${tag}`}</Tag>
+              <Badge theme="primary" key={index} tag={tag}>{`#${tag}`}</Badge>
             ))}
           </div>
           {/************** TITLE **************/}
@@ -85,31 +85,31 @@ const PostPage = ({ data, location, pageContext }) => {
           {/************** PREPARATION INFO **************/}
           <div className="prep-info-wrapper">
             <div className="prep-info">
-              <h4 className="prep-info--title">
+              <h5 className="prep-info--title">
                 {iconSolid("faSignal", { margin: "0 .5rem" })}
                 Level
-              </h4>
+              </h5>
               <small className="prep-info--text">{post.difficulty}</small>
             </div>
             <div className="prep-info">
-              <h4 className="prep-info--title">
+              <h5 className="prep-info--title">
                 {iconSolid("faUtensilSpoon", { margin: "0 .5rem" })}
                 Prep
-              </h4>
+              </h5>
               <small className="prep-info--text">{post.prepTime} mins</small>
             </div>
             <div className="prep-info">
-              <h4 className="prep-info--title">
+              <h5 className="prep-info--title">
                 {iconSolid("faFire", { margin: "0 .5rem" })}
                 Cook
-              </h4>
+              </h5>
               <small className="prep-info--text">{post.cookTime} mins</small>
             </div>
             <div className="prep-info">
-              <h4 className="prep-info--title">
+              <h5 className="prep-info--title">
                 {iconSolid("faUserFriends", { margin: "0 .5rem" })}
                 Serves
-              </h4>
+              </h5>
               <small className="prep-info--text">{post.serves} people</small>
             </div>
           </div>
@@ -137,7 +137,13 @@ const PostPage = ({ data, location, pageContext }) => {
             {documentToReactComponents(post.body.json, {
               renderNode: {
                 [BLOCKS.HR]: (node, children) => (
-                  <hr style={{ height: 3, background: colors.secondary }} />
+                  <hr
+                    style={{
+                      height: 3,
+                      background: colors.secondary,
+                      boxShadow: `${typography.shadowPrimary}`,
+                    }}
+                  />
                 ),
                 [BLOCKS.EMBEDDED_ASSET]: (node, children) =>
                   node.data.target.fields === undefined ? (
@@ -145,13 +151,13 @@ const PostPage = ({ data, location, pageContext }) => {
                   ) : (
                     <picture>
                       <source
-                        srcSet={`${node.data.target.fields.file["en-US"].url}?w='960'&h=600&fit=thumb&f=top&fl=progressive&fm=webp`}
+                        srcSet={`${node.data.target.fields.file["en-US"].url}?w=${appearance.articleWidth}&h=500&fit=thumb&f=top&fl=progressive&fm=webp`}
                         type="image / webp"
                         media="(width: 1900px)"
                         alt={node.data.target.fields.title["en-US"]}
                       />
                       <img
-                        src={`${node.data.target.fields.file["en-US"].url}?w=960&h=600&fit=thumb&f=center&fl=progressive`}
+                        src={`${node.data.target.fields.file["en-US"].url}?w=${appearance.articleWidth}&h=500&fit=fill&f=center&fl=progressive`}
                         alt={node.data.target.fields.title["en-US"]}
                       />
                     </picture>
@@ -167,7 +173,10 @@ const PostPage = ({ data, location, pageContext }) => {
 
 //* styled-component < 💅>
 const Wrap = styled.div`
+  font-size: 1.1rem;
   .sub-header {
+    position: sticky;
+    top: 4rem;
     background: ${colors.secondary};
     padding: 0.7rem;
     display: flex;
@@ -192,6 +201,8 @@ const Wrap = styled.div`
   }
   article {
     padding: 0 1rem;
+    margin: auto;
+    width: ${appearance.articleWidth};
     .title {
       margin-top: 1rem;
     }
@@ -200,13 +211,16 @@ const Wrap = styled.div`
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 0.5rem 0;
+      padding: 1rem 0;
       margin-bottom: 1rem;
       .prep-info {
         width: 20%;
         text-align: center;
         &--title {
-          margin-bottom: 0.5rem;
+          margin-bottom: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         &--text {
           color: ${colors.secondary};
@@ -216,6 +230,12 @@ const Wrap = styled.div`
     .ingredient.odd {
       list-style: none;
     }
+    ul {
+      padding: 0;
+    }
+  }
+  img {
+    width: 100%;
   }
 `
 

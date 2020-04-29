@@ -51,6 +51,7 @@ const Wrap = styled(Dropdown)`
   }
   a {
     color: ${colors.primary};
+    text-shadow: none;
     display: block;
     padding: 0.5rem 1rem;
 
@@ -58,6 +59,7 @@ const Wrap = styled(Dropdown)`
       text-decoration: none;
       background: ${colors.primary};
       color: ${colors.secondary};
+      text-shadow: none;
     }
   }
 `
