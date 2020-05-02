@@ -1,28 +1,21 @@
-import React from "react"
-import { Link } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
+import { PropTypes } from 'prop-types';
 
-import styled from "styled-components"
-import _ from "lodash"
-import { colors, appearance } from "../utils/variables"
+import styled from 'styled-components';
+import _ from 'lodash';
+import { colors, appearance, typography } from '../utils/variables';
 
-import Badge from "./Badge"
+import Badge from './Badge';
 
-const PostCard = ({
-  id,
-  title,
-  tags,
-  slug,
-  description,
-  createdAt,
-  thumbnail,
-}) => {
+const PostCard = ({ title, tags, slug, description, createdAt, thumbnail }) => {
   return (
     <Article className="card">
       <Img
         className="thumbnail"
         fluid={thumbnail.fluid}
-        style={{ borderRadius: ".8rem .8rem 0 0" }}
+        style={{ borderRadius: '.8rem .8rem 0 0' }}
       />
       <div className="information">
         <Link to={`/${slug}`}>
@@ -32,9 +25,9 @@ const PostCard = ({
         <p className="description">{description}</p>
         <div className="bottom">
           <div className="tags">
-            {tags.map((tag, index) => (
+            {tags.map(tag => (
               <Badge
-                key={index}
+                key={tag}
                 to={`/tags/${_.kebabCase(tag)}`}
                 theme="primary"
                 size="md"
@@ -55,8 +48,17 @@ const PostCard = ({
         </div>
       </div>
     </Article>
-  )
-}
+  );
+};
+
+PostCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  tags: PropTypes.instanceOf(Array).isRequired,
+  slug: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  thumbnail: PropTypes.instanceOf(Object).isRequired,
+};
 
 //* styled-component < 💅>
 const Article = styled.div`
@@ -75,11 +77,10 @@ const Article = styled.div`
     padding: 1rem 1rem 1rem 1rem;
     .title {
       margin-bottom: 0.5rem;
-      a {
-        color: ${colors.secondary};
-        &:hover {
-          color: ${colors.primary};
-        }
+
+      &:hover {
+        color: ${colors.primary};
+        text-shadow: ${typography.shadowSecondary};
       }
     }
     .date {
@@ -96,6 +97,6 @@ const Article = styled.div`
       }
     }
   }
-`
+`;
 
-export default PostCard
+export default PostCard;

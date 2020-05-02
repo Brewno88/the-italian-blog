@@ -1,19 +1,17 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import { colors } from "../utils/variables"
-import { iconSolid, iconCircle } from "../utils/icons"
+import React from 'react';
+import styled from 'styled-components';
+import { colors } from '../utils/variables';
+import { iconCircle } from '../utils/icons';
 
-const SideNavbar = ({ ...props }) => {
-  return (
-    <Wrap>
-      <div className="icons">
-        {iconCircle("faFacebookF", "secondary")}
-        {iconCircle("faInstagram", "secondary")}
-        {iconCircle("faTwitter", "secondary")}
-      </div>
-    </Wrap>
-  )
-}
+const SideNavbar = () => (
+  <Wrap>
+    <div className="icons">
+      {iconCircle('faFacebookF', 'secondary')}
+      {iconCircle('faInstagram', 'secondary')}
+      {iconCircle('faTwitter', 'secondary')}
+    </div>
+  </Wrap>
+);
 
 //* styled-component < 💅>
 const Wrap = styled.div`
@@ -31,6 +29,6 @@ const Wrap = styled.div`
     display: flex;
     justify-content: space-evenly;
   }
-`
+`;
 
-export default SideNavbar
+export default SideNavbar;

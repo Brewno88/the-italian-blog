@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from "react"
-import styled from "styled-components"
-import { iconCircle } from "../utils/icons"
-import { faBalanceScale } from "@fortawesome/free-solid-svg-icons"
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { iconCircle } from '../utils/icons';
 
 const ScrollToTop = () => {
-  const [scroll, setScroll] = useState(0)
+  const [scroll, setScroll] = useState(0);
   useEffect(() => {
-    window.addEventListener("scroll", getScroll)
-  }, [scroll])
+    window.addEventListener('scroll', getScroll);
+  }, [scroll]);
 
   const getScroll = () => {
-    setScroll(window.pageYOffset)
-  }
+    setScroll(window.pageYOffset);
+  };
 
   const scrollToTop = () => {
-    window.scrollTo(0, 0)
-  }
+    window.scrollTo(0, 0);
+  };
   return (
     <Wrap>
-      <span onClick={scrollToTop}>
-        {iconCircle("faArrowUp", "primary", {
-          display: scroll > 500 ? "flex" : "none",
-          width: "5rem",
-          height: "5rem",
+      <span onClick={scrollToTop} onKeyDown={scrollToTop} role="link">
+        {iconCircle('faArrowUp', 'primary', {
+          display: scroll > 500 ? 'flex' : 'none',
+          width: '5rem',
+          height: '5rem',
         })}
       </span>
     </Wrap>
-  )
-}
+  );
+};
 
 //* styled-component < 💅>
 const Wrap = styled.div`
@@ -44,6 +43,6 @@ const Wrap = styled.div`
   .icon {
     font-size: 3rem;
   }
-`
+`;
 
-export default ScrollToTop
+export default ScrollToTop;

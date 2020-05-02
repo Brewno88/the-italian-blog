@@ -1,12 +1,12 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from "../components/layout"
-import PostCard from "../components/PostCard"
-import SEO from "../components/seo"
+import Layout from '../components/layout';
+import PostCard from '../components/PostCard';
+import SEO from '../components/seo';
 
 const IndexPage = ({ data, location }) => {
-  const posts = data.posts.nodes
+  const posts = data.posts.nodes;
 
   // console.log(posts)
 
@@ -26,8 +26,8 @@ const IndexPage = ({ data, location }) => {
         />
       ))}
     </Layout>
-  )
-}
+  );
+};
 
 export const getPosts = graphql`
   {
@@ -48,6 +48,6 @@ export const getPosts = graphql`
       }
     }
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

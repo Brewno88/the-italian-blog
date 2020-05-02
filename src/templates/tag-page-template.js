@@ -1,8 +1,8 @@
-import React from "react"
-import Layout from "../components/layout"
-import styled from "styled-components"
-import _ from "lodash"
-import PostCard from "../components/PostCard"
+import React from 'react';
+import styled from 'styled-components';
+import _ from 'lodash';
+import Layout from '../components/layout';
+import PostCard from '../components/PostCard';
 
 export const query = graphql`
   query($tag: String!) {
@@ -30,45 +30,43 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const TagPage = ({ data, location, pageContext }) => {
-  const tagPosts = data.allContentfulBlogPost.nodes
-  const { posts } = pageContext
+  const tagPosts = data.allContentfulBlogPost.nodes;
+  const { posts } = pageContext;
 
   return (
     <Wrap>
       <Layout location={location} posts={posts}>
-        {tagPosts.map((post, index) => {
-          return (
-            <PostCard
-              key={post.id}
-              title={post.title}
-              id={post.id}
-              slug={`${_.kebabCase(post.title)}`}
-              tags={post.tags}
-              thumbnail={post.thumbnail}
-              description={post.description}
-              createdAt={post.createdAt}
-            />
-            // <TagCard
-            //   key={post.id}
-            //   title={post.title}
-            //   id={post.id}
-            //   slug={`${_.kebabCase(post.title)}`}
-            //   tags={post.tags}
-            //   thumbnail={post.thumbnail}
-            //   description={post.description}
-            //   createdAt={post.createdAt}
-            // />
-          )
-        })}
+        {tagPosts.map((post, index) => (
+          <PostCard
+            key={post.id}
+            title={post.title}
+            id={post.id}
+            slug={`${_.kebabCase(post.title)}`}
+            tags={post.tags}
+            thumbnail={post.thumbnail}
+            description={post.description}
+            createdAt={post.createdAt}
+          />
+          // <TagCard
+          //   key={post.id}
+          //   title={post.title}
+          //   id={post.id}
+          //   slug={`${_.kebabCase(post.title)}`}
+          //   tags={post.tags}
+          //   thumbnail={post.thumbnail}
+          //   description={post.description}
+          //   createdAt={post.createdAt}
+          // />
+        ))}
       </Layout>
     </Wrap>
-  )
-}
+  );
+};
 
 //* styled-component < 💅>
-const Wrap = styled.div``
+const Wrap = styled.div``;
 
-export default TagPage
+export default TagPage;

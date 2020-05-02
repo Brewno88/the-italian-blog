@@ -1,30 +1,31 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { colors } from "../utils/variables"
-import Dropdown from "react-bootstrap/Dropdown"
-import { countTags, sortTags } from "../utils/functions"
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { colors } from '../utils/variables';
+import { countTags, sortTags } from '../utils/functions';
 
 const TagsDropdown = ({ posts }) => {
   // //***** CREATE OBJECT THAT COUNT EACH TAG *******//
-  let tagCounts = countTags(posts)
+  const tagCounts = countTags(posts);
 
-  //***** CREATE ARRAY WITH UNIQUE TAGS *******//
-  let sortedTags = sortTags(tagCounts)
+  //* **** CREATE ARRAY WITH UNIQUE TAGS *******//
+  const sortedTags = sortTags(tagCounts);
 
   return (
     <Wrap>
       <Dropdown.Toggle>Tags</Dropdown.Toggle>
       <Dropdown.Menu>
-        {sortedTags.map((tag, index) => (
-          <Link key={index} to={`/tags/${tag[0]}`}>
-            {tag[0]}: {tag[1]}
+        {sortedTags.map(tag => (
+          <Link key={tag} to={`/tags/${tag[0]}`}>
+            {tag[0]}:{tag[1]}
           </Link>
         ))}
       </Dropdown.Menu>
     </Wrap>
-  )
-}
+  );
+};
 
 //* styled-component < 💅>
 const Wrap = styled(Dropdown)`
@@ -70,6 +71,9 @@ const Wrap = styled(Dropdown)`
       }
     }
   }
-`
+`;
 
-export default TagsDropdown
+TagsDropdown.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+export default TagsDropdown;

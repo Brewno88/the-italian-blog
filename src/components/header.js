@@ -1,23 +1,13 @@
-import { Link } from "gatsby"
-import React from "react"
-import styled from "styled-components"
+import { Link } from 'gatsby';
+import React from 'react';
+import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 
-import { colors, typography, appearance } from "../utils/variables"
+import { colors, typography, appearance } from '../utils/variables';
 // import SideNavbar from "./SideNavbar"
-import TagsDropdown from "./TagsDropdown"
+import TagsDropdown from './TagsDropdown';
 
 const Header = ({ siteTitle, location, posts }) => {
-  // const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
-
-  // if (isSideMenuOpen) {
-  //   let sideNavbar = (
-  //     <SideNavbar
-  //       isSideMenuOpen={isSideMenuOpen}
-  //       onCloseIcon={e => setIsSideMenuOpen(e)}
-  //     />
-  //   )
-  // }
-
   return (
     <MyHeader location={location}>
       <div className="header-content">
@@ -32,12 +22,12 @@ const Header = ({ siteTitle, location, posts }) => {
         <TagsDropdown posts={posts} />
       </div>
     </MyHeader>
-  )
-}
+  );
+};
 
 const MyHeader = styled.header`
   background: ${colors.primary};
-  margin-bottom: ${props => (props.location.pathname === "/" ? "1.45rem" : 0)};
+  margin-bottom: ${props => (props.location.pathname === '/' ? '1.45rem' : 0)};
   position: fixed;
   width: 100%;
   top: 0;
@@ -61,6 +51,12 @@ const MyHeader = styled.header`
       text-shadow: ${typography.shadowSecondary};
     }
   }
-`
+`;
 
-export default Header
+Header.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+  posts: PropTypes.instanceOf(Array).isRequired,
+};
+
+export default Header;

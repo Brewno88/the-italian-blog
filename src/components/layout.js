@@ -1,12 +1,13 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { createGlobalStyle, styled } from "styled-components"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { createGlobalStyle } from 'styled-components';
+import { PropTypes } from 'prop-types';
 
-import Header from "./header"
-import Footer from "./footer"
+import Header from './header';
+import Footer from './footer';
 // import "./global.css"
-import { colors, typography, appearance, animation } from "../utils/variables"
-import ScrollToTop from "./ScrollTopButton"
+import { colors, typography, appearance, animation } from '../utils/variables';
+import ScrollToTop from './ScrollTopButton';
 
 const Layout = ({ children, location, posts }) => {
   const data = useStaticQuery(graphql`
@@ -17,7 +18,7 @@ const Layout = ({ children, location, posts }) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -31,7 +32,7 @@ const Layout = ({ children, location, posts }) => {
       <main
         style={{
           background: colors.ternary,
-          margin: `0 auto`,
+          margin: '0 auto',
           maxWidth: appearance.headerWidth,
         }}
       >
@@ -40,8 +41,14 @@ const Layout = ({ children, location, posts }) => {
       </main>
       <Footer siteTitle={data.site.siteMetadata.title} />
     </>
-  )
-}
+  );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+  posts: PropTypes.instanceOf(Array).isRequired,
+};
 
 const GlobalStyle = createGlobalStyle`
 *, *:after, *:before{
@@ -114,6 +121,6 @@ small{
   font-size: 1.2rem;
   font-style: italic;
 }
-`
+`;
 
-export default Layout
+export default Layout;

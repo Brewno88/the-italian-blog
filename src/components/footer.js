@@ -1,25 +1,28 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { colors, appearance, typography } from "../utils/variables"
-import { iconCircle } from "../utils/icons"
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
+import { colors, appearance, typography } from '../utils/variables';
+import { iconCircle } from '../utils/icons';
 
-const Footer = ({ siteTitle }) => {
-  return (
-    <MyFooter>
-      <div className="container">
-        <Link to="/">
-          <h3>{siteTitle}</h3>
-        </Link>
-        <div className="social-medias">
-          {iconCircle("faFacebookF", "secondary", { marginRight: "1rem" })}
-          {iconCircle("faInstagram", "secondary", { marginRight: "1rem" })}
-          {iconCircle("faTwitter", "secondary", { marginRight: "1rem" })}
-        </div>
+const Footer = ({ siteTitle }) => (
+  <MyFooter>
+    <div className="container">
+      <Link to="/">
+        <h3>{siteTitle}</h3>
+      </Link>
+      <div className="social-medias">
+        {iconCircle('faFacebookF', 'secondary', { marginRight: '1rem' })}
+        {iconCircle('faInstagram', 'secondary', { marginRight: '1rem' })}
+        {iconCircle('faTwitter', 'secondary', { marginRight: '1rem' })}
       </div>
-    </MyFooter>
-  )
-}
+    </div>
+  </MyFooter>
+);
+
+Footer.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+};
 
 //* styled-component < 💅>
 const MyFooter = styled.footer`
@@ -45,6 +48,6 @@ const MyFooter = styled.footer`
       }
     }
   }
-`
+`;
 
-export default Footer
+export default Footer;

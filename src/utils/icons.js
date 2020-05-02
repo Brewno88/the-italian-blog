@@ -1,15 +1,16 @@
-import React from "react"
+import React from 'react';
 
-import styled from "styled-components"
-import { colors } from "./variables"
+import styled from 'styled-components';
 // Font-Awesome
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import {
   faWhatsapp,
   faFacebookF,
   faTwitter,
   faInstagram,
-} from "@fortawesome/free-brands-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
   faShareAlt,
@@ -20,8 +21,81 @@ import {
   faArrowUp,
   faBars,
   faTimes,
-} from "@fortawesome/free-solid-svg-icons"
+} from '@fortawesome/free-solid-svg-icons';
+import { colors } from './variables';
 
+export const iconCircle = (icon, variant, style) => {
+  config.autoAddCss = false;
+  let socialLink;
+  let socialIcon;
+
+  switch (icon) {
+    case 'faFacebookF':
+      socialIcon = faFacebookF;
+      // socialLink = "https://www.facebook.com/"
+      break;
+    case 'faTwitter':
+      socialIcon = faTwitter;
+      socialLink = 'https://www.twitter.com/';
+      break;
+    case 'faWhatsapp':
+      socialIcon = faWhatsapp;
+      socialLink = 'https://www.whatsapp.com/';
+      break;
+    case 'faInstagram':
+      socialIcon = faInstagram;
+      socialLink = 'https://www.instagram.com/';
+      break;
+    case 'faArrowUp':
+      socialIcon = faArrowUp;
+      break;
+    case 'faShareAlt':
+      socialIcon = faShareAlt;
+      break;
+    default:
+      break;
+  }
+  return (
+    <Circle
+      className={`${variant} ${icon}`}
+      style={style}
+      href={socialLink}
+      target="_blank"
+    >
+      <FontAwesomeIcon icon={socialIcon} className="icon" />
+    </Circle>
+  );
+};
+export const iconSolid = (icon, style) => {
+  let useIcon;
+  switch (icon) {
+    case 'faClock':
+      useIcon = faClock;
+      break;
+    case 'faSignal':
+      useIcon = faSignal;
+      break;
+    case 'faUtensilSpoon':
+      useIcon = faUtensilSpoon;
+      break;
+    case 'faFire':
+      useIcon = faFire;
+      break;
+    case 'faUserFriends':
+      useIcon = faUserFriends;
+      break;
+    case 'faBars':
+      useIcon = faBars;
+      break;
+    case 'faTimes':
+      useIcon = faTimes;
+      break;
+    default:
+      break;
+  }
+  // variant === "secondary" ? (variant = secondary) : (variant = primary)
+  return <FontAwesomeIcon icon={useIcon} style={style} />;
+};
 const Circle = styled.a`
   display: inline-flex;
   width: 3.8rem;
@@ -47,70 +121,4 @@ const Circle = styled.a`
       color: ${colors.ternary};
     }
   }
-`
-
-export const iconCircle = (icon, variant, style) => {
-  let socialLink
-  let socialIcon
-
-  switch (icon) {
-    case "faFacebookF":
-      socialIcon = faFacebookF
-      socialLink = "https://www.facebook.com/"
-      break
-    case "faTwitter":
-      socialIcon = faTwitter
-      socialLink = "https://www.twitter.com/"
-      break
-    case "faWhatsapp":
-      socialIcon = faWhatsapp
-      socialLink = "https://www.whatsapp.com/"
-      break
-    case "faInstagram":
-      socialIcon = faInstagram
-      socialLink = "https://www.instagram.com/"
-      break
-    case "faArrowUp":
-      socialIcon = faArrowUp
-      break
-    case "faShareAlt":
-      socialIcon = faShareAlt
-      break
-    default:
-      break
-  }
-  return (
-    <Circle className={variant} style={style} href={socialLink} target="_blank">
-      <FontAwesomeIcon icon={socialIcon} className="icon" />
-    </Circle>
-  )
-}
-export const iconSolid = (icon, style) => {
-  switch (icon) {
-    case "faClock":
-      icon = faClock
-      break
-    case "faSignal":
-      icon = faSignal
-      break
-    case "faUtensilSpoon":
-      icon = faUtensilSpoon
-      break
-    case "faFire":
-      icon = faFire
-      break
-    case "faUserFriends":
-      icon = faUserFriends
-      break
-    case "faBars":
-      icon = faBars
-      break
-    case "faTimes":
-      icon = faTimes
-      break
-    default:
-      break
-  }
-  // variant === "secondary" ? (variant = secondary) : (variant = primary)
-  return <FontAwesomeIcon icon={icon} style={style} />
-}
+`;
