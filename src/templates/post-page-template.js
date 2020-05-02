@@ -1,16 +1,19 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import React, { useEffect, useState } from 'react';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import { PropTypes } from 'prop-types';
 // others
-import styled from "styled-components"
-import _ from "lodash"
-import Badge from "../components/Badge"
-import Layout from "../components/layout"
-import { colors, typography, appearance } from "../utils/variables"
-import { iconCircle, iconSolid } from "../utils/icons"
+import styled from 'styled-components';
+import _ from 'lodash';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS } from '@contentful/rich-text-types';
+import Badge from '../components/Badge';
+import Layout from '../components/layout';
+import { colors, typography, appearance } from '../utils/variables';
+import { iconSolid } from '../utils/icons';
+import { WebShare } from '../components/WebShare';
+import { ShareButtons } from '../components/ShareButtons';
 // contentful
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import { BLOCKS } from "@contentful/rich-text-types"
 
 export const query = graphql`
   query($slug: String!) {
@@ -44,84 +47,101 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
+// eslint-disable-next-line react/prop-types
 const PostPage = ({ data, location, pageContext }) => {
-  const post = data.contentfulBlogPost
-  const { posts } = pageContext
+  const post = data.contentfulBlogPost;
+  const { posts } = pageContext;
+  // Web Share is supported
+  const [isWebShare, setIsWebShare] = useState(false);
+  useEffect(() => {
+    navigator.share ? setIsWebShare(true) : setIsWebShare(false);
+    return () => isWebShare;
+  }, []);
+
   return (
     <Wrap>
       <Layout location={location} posts={posts}>
-        {/************** COVER IMAGE **************/}
+        {/** ************ COVER IMAGE ************* */}
         <Img
           className="hero"
           fluid={post.thumbnail.fluid}
-          style={{ height: "40rem" }}
+          style={{ height: '40rem' }}
         />
-        {/************** SUB--HEADER **************/}
+        {/** ************ SUB--HEADER ************* */}
         <div className="sub-header">
           <div className="sub-header--date">
-            {iconSolid("faClock")}
+            {iconSolid('faClock', { fontSize: '2rem' })}
+
             <small>{post.createdAt}</small>
           </div>
-
-          <div className="socials">
-            {iconCircle("faShareAlt", "primary", { marginLeft: "1rem" })}
-            {iconCircle("faFacebookF", "primary", { marginLeft: "1rem" })}
-            {iconCircle("faWhatsapp", "primary", { marginLeft: "1rem" })}
-            {iconCircle("faTwitter", "primary", { marginLeft: "1rem" })}
-          </div>
+          {/* if Web Share supported show single share button, else multi social buttons */}
+          {isWebShare ? (
+            <WebShare location={location} post={post} />
+          ) : (
+            <ShareButtons location={location} post={post} />
+          )}
         </div>
-        {/************** TAGS **************/}
+        {/** ************ TAGS ************* */}
         <div className="tags">
-          {post.tags.map((tag, index) => (
+          {post.tags.map(tag => (
             <Badge
               to={`/tags/${_.kebabCase(tag)}`}
               theme="primary"
-              key={index}
+              key={tag}
               tag={tag}
             >
               {`#${tag}`}
             </Badge>
           ))}
         </div>
-        {/************** MAIN **************/}
+        {/** ************ MAIN ************* */}
         <article className="main-content">
-          {/************** TITLE **************/}
+          {/** ************ TITLE ************* */}
           <h1 className="title">{post.title}</h1>
           <p className="description">{post.description}</p>
-          {/************** PREPARATION INFO **************/}
+          {/** ************ PREPARATION INFO ************* */}
           <div className="prep-info-wrapper">
             <div className="prep-info">
               <h5 className="prep-info--title">
-                {iconSolid("faSignal", { margin: "0 .5rem" })}
+                {iconSolid('faSignal', { margin: '0 .5rem' })}
                 Level
               </h5>
               <small className="prep-info--text">{post.difficulty}</small>
             </div>
             <div className="prep-info">
               <h5 className="prep-info--title">
-                {iconSolid("faUtensilSpoon", { margin: "0 .5rem" })}
+                {iconSolid('faUtensilSpoon', { margin: '0 .5rem' })}
                 Prep
               </h5>
-              <small className="prep-info--text">{post.prepTime} mins</small>
+              <small className="prep-info--text">
+                {post.prepTime}
+                mins
+              </small>
             </div>
             <div className="prep-info">
               <h5 className="prep-info--title">
-                {iconSolid("faFire", { margin: "0 .5rem" })}
+                {iconSolid('faFire', { margin: '0 .5rem' })}
                 Cook
               </h5>
-              <small className="prep-info--text">{post.cookTime} mins</small>
+              <small className="prep-info--text">
+                {post.cookTime}
+                mins
+              </small>
             </div>
             <div className="prep-info">
               <h5 className="prep-info--title">
-                {iconSolid("faUserFriends", { margin: "0 .5rem" })}
+                {iconSolid('faUserFriends', { margin: '0 .5rem' })}
                 Serves
               </h5>
-              <small className="prep-info--text">{post.serves} people</small>
+              <small className="prep-info--text">
+                {post.serves}
+                people
+              </small>
             </div>
           </div>
-          {/************** INGREDIENTS **************/}
+          {/** ************ INGREDIENTS ************* */}
           <h2>Ingredients:</h2>
           <ul
             style={{
@@ -129,22 +149,22 @@ const PostPage = ({ data, location, pageContext }) => {
               columns: post.ingredients.length <= 5 ? 1 : 2,
             }}
           >
-            {post.ingredients.map((ingredient, index) => (
+            {post.ingredients.map(ingredient => (
               <li
-                key={index}
+                key={ingredient}
                 style={{
-                  listStylePosition: "inside",
+                  listStylePosition: 'inside',
                 }}
               >
                 {ingredient}
               </li>
             ))}
           </ul>
-          {/************** POST BODY **************/}
+          {/** ************ POST BODY ************* */}
           <div>
             {documentToReactComponents(post.body.json, {
               renderNode: {
-                [BLOCKS.HR]: (node, children) => (
+                [BLOCKS.HR]: () => (
                   <hr
                     style={{
                       height: 3,
@@ -153,20 +173,20 @@ const PostPage = ({ data, location, pageContext }) => {
                     }}
                   />
                 ),
-                [BLOCKS.EMBEDDED_ASSET]: (node, children) =>
+                [BLOCKS.EMBEDDED_ASSET]: node =>
                   node.data.target.fields === undefined ? (
-                    <div></div>
+                    <div />
                   ) : (
                     <picture>
                       <source
-                        srcSet={`${node.data.target.fields.file["en-US"].url}?w=${appearance.articleWidth}&h=500&fit=thumb&f=top&fl=progressive&fm=webp`}
+                        srcSet={`${node.data.target.fields.file['en-US'].url}?w=${appearance.articleWidth}&h=500&fit=thumb&f=top&fl=progressive&fm=webp`}
                         type="image / webp"
                         media="(width: 1900px)"
-                        alt={node.data.target.fields.title["en-US"]}
+                        alt={node.data.target.fields.title['en-US']}
                       />
                       <img
-                        src={`${node.data.target.fields.file["en-US"].url}?w=${appearance.articleWidth}&h=500&fit=fill&f=center&fl=progressive`}
-                        alt={node.data.target.fields.title["en-US"]}
+                        src={`${node.data.target.fields.file['en-US'].url}?w=${appearance.articleWidth}&h=500&fit=fill&f=center&fl=progressive`}
+                        alt={node.data.target.fields.title['en-US']}
                       />
                     </picture>
                   ),
@@ -176,8 +196,17 @@ const PostPage = ({ data, location, pageContext }) => {
         </article>
       </Layout>
     </Wrap>
-  )
-}
+  );
+};
+
+PostPage.propTypes = {
+  data: PropTypes.objectOf(Object).isRequired,
+  location: PropTypes.objectOf(Object).isRequired,
+  pageContext: PropTypes.shape({
+    posts: PropTypes.arrayOf(Object),
+    slug: PropTypes.string,
+  }).isRequired,
+};
 
 //* styled-component < 💅>
 const Wrap = styled.div`
@@ -193,7 +222,7 @@ const Wrap = styled.div`
     &--date {
       display: flex;
       align-items: center;
-      font-size: 2rem;
+      /* font-size: 2rem; */
       color: ${colors.primary};
       small {
         margin-left: 1rem;
@@ -207,6 +236,8 @@ const Wrap = styled.div`
   }
   .socials {
     display: flex;
+    align-items: center;
+    color: white;
   }
   article {
     margin: auto;
@@ -252,6 +283,6 @@ const Wrap = styled.div`
     width: 100%;
     margin: 2rem 0;
   }
-`
+`;
 
-export default PostPage
+export default PostPage;
