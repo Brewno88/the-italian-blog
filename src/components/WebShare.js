@@ -15,21 +15,23 @@ const WebShare = ({ location, post }) => {
   );
 
   const onShareButton = () => {
-    navigator
-      .share({
-        title: post.title,
-        text: post.description,
-        url: location.href,
-      })
-      .then(() => {
-        setShareError(false);
-        return alert('Thanks for sharing');
-      })
-      .catch(error =>
-        error.message !== 'Abort due to cancellation of share.'
-          ? setShareError(true)
-          : setShareError(false),
-      );
+    if (navigator.share) {
+      navigator
+        .share({
+          title: post.title,
+          text: post.description,
+          url: location.href,
+        })
+        .then(() => {
+          setShareError(false);
+          return alert('Thanks for sharing');
+        })
+        .catch(error =>
+          error.message === 'Abort due to cancellation of share.'
+            ? setShareError(false)
+            : setShareError(true),
+        );
+    }
   };
   return shareError ? (
     <ShareButtons location={location} post={post} />
