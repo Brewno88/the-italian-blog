@@ -53,16 +53,14 @@ const Wrap = styled(Dropdown)`
   .dropdown-menu {
     background: ${colors.secondary};
     border-radius: 0.5rem;
+
     a {
       color: ${colors.primary};
-      padding: 0.7rem 0;
       text-shadow: none;
       display: block;
-      font-size: 1.5rem;
+      font-size: 2rem;
       transition: none;
-
-      width: 100%;
-      padding: 0.25rem 1.5rem;
+      padding: 1rem 2rem;
       white-space: nowrap;
       &:hover {
         background: ${colors.primary};
