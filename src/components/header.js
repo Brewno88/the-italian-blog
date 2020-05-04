@@ -22,9 +22,7 @@ const Header = ({ siteTitle, location, posts }) => {
 const MyHeader = styled.header`
   background: ${colors.primary};
   margin-bottom: ${props => (props.location.pathname === '/' ? '1.45rem' : 0)};
-  position: fixed;
-  width: 100%;
-  top: 0;
+
   z-index: 5;
   padding: 2rem 2rem;
   .header-content {

@@ -62,7 +62,7 @@ html{
 body{
   background: ${colors.ternary};
   position: relative;
-  padding: 8rem 0 13rem 0;
+  padding: 0 0 13rem 0;
   min-height: 100vh;
 
 }

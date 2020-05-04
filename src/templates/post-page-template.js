@@ -214,7 +214,7 @@ const Wrap = styled.div`
   }
   .sub-header {
     position: sticky;
-    top: 8rem;
+    top: 0;
     background: ${colors.secondary};
     padding: 1rem 2rem;
     display: flex;
