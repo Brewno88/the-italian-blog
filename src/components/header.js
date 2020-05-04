@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 import { colors, typography, appearance } from '../utils/variables';
-// import SideNavbar from "./SideNavbar"
 import TagsDropdown from './TagsDropdown';
 
 const Header = ({ siteTitle, location, posts }) => {
@@ -14,11 +13,6 @@ const Header = ({ siteTitle, location, posts }) => {
         <Link to="/">
           <h1>{siteTitle}</h1>
         </Link>
-        {/* <MenuIcon
-          isSideMenuOpen={isSideMenuOpen}
-          onMenuIcon={e => setIsSideMenuOpen(e)}
-          />
-        {sideNavbar} */}
         <TagsDropdown posts={posts} />
       </div>
     </MyHeader>
@@ -55,8 +49,8 @@ const MyHeader = styled.header`
 
 Header.propTypes = {
   siteTitle: PropTypes.string.isRequired,
-  location: PropTypes.instanceOf(Object).isRequired,
-  posts: PropTypes.instanceOf(Array).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  posts: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default Header;

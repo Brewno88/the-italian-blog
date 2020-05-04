@@ -11,8 +11,8 @@ import Badge from '../components/Badge';
 import Layout from '../components/layout';
 import { colors, typography, appearance } from '../utils/variables';
 import { iconSolid } from '../utils/icons';
-import { WebShare } from '../components/WebShare';
-import { ShareButtons } from '../components/ShareButtons';
+import WebShare from '../components/WebShare';
+import ShareButtons from '../components/ShareButtons';
 // contentful
 
 export const query = graphql`
@@ -56,8 +56,10 @@ const PostPage = ({ data, location, pageContext }) => {
   // Web Share is supported
   const [isWebShare, setIsWebShare] = useState(false);
   useEffect(() => {
-    navigator.share ? setIsWebShare(true) : setIsWebShare(false);
-    return () => isWebShare;
+    if (navigator.share) {
+      return setIsWebShare(true);
+    }
+    return setIsWebShare(false);
   }, []);
 
   return (
@@ -200,12 +202,9 @@ const PostPage = ({ data, location, pageContext }) => {
 };
 
 PostPage.propTypes = {
-  data: PropTypes.objectOf(Object).isRequired,
-  location: PropTypes.objectOf(Object).isRequired,
-  pageContext: PropTypes.shape({
-    posts: PropTypes.arrayOf(Object),
-    slug: PropTypes.string,
-  }).isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  pageContext: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 //* styled-component < 💅>

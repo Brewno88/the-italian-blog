@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { PropTypes } from 'prop-types';
 
 import Layout from '../components/layout';
 import PostCard from '../components/PostCard';
@@ -13,7 +14,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <Layout location={location} posts={posts}>
       <SEO title="Home" />
-      {posts.map((post, i) => (
+      {posts.map(post => (
         <PostCard
           key={post.id}
           title={post.title}
@@ -27,6 +28,11 @@ const IndexPage = ({ data, location }) => {
       ))}
     </Layout>
   );
+};
+
+IndexPage.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export const getPosts = graphql`

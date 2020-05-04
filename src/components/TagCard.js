@@ -37,7 +37,7 @@ const TagCard = ({ title, slug, thumbnail }) => {
 TagCard.propTypes = {
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  thumbnail: PropTypes.instanceOf(Object).isRequired,
+  thumbnail: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 //* styled-component < 💅>

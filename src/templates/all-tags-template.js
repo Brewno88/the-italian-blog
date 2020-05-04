@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { PropTypes } from 'prop-types';
 
 import { colors } from '../utils/variables';
 
@@ -24,7 +25,7 @@ const SecondPage = ({ location, pageContext }) => {
             marginBottom: '2rem',
             padding: '1rem 0',
           }}
-          key={index}
+          key={tag}
         >
           <Link
             to={`/tags/${tag[0]}`}
@@ -34,15 +35,18 @@ const SecondPage = ({ location, pageContext }) => {
             }}
           >
             <h2>
-              {tag[0]}
-              :
-              {tag[1]}
+              {tag[0]}:{tag[1]}
             </h2>
           </Link>
         </div>
       ))}
     </Layout>
   );
+};
+
+SecondPage.propTypes = {
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  pageContext: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default SecondPage;
