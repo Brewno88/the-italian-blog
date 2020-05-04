@@ -22,7 +22,6 @@ const WebShare = ({ location, post }) => {
         url: location.href,
       })
       .then(() => {
-        setShareError(false);
         return alert('Thanks for sharing');
       })
       .catch(error => {
