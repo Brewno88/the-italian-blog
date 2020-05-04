@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -6,7 +7,7 @@ import {
 } from 'react-share';
 import { iconCircle } from '../utils/icons';
 
-export const ShareButtons = ({ location, post }) => (
+const ShareButtons = ({ location, post }) => (
   <div className="socials">
     <FacebookShareButton url={location.href} quote={post.title}>
       {iconCircle('faFacebookF', 'primary', {
@@ -25,3 +26,10 @@ export const ShareButtons = ({ location, post }) => (
     </TwitterShareButton>
   </div>
 );
+
+ShareButtons.propTypes = {
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  post: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+export default ShareButtons;

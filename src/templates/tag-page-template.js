@@ -1,4 +1,6 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import _ from 'lodash';
 import Layout from '../components/layout';
@@ -39,7 +41,7 @@ const TagPage = ({ data, location, pageContext }) => {
   return (
     <Wrap>
       <Layout location={location} posts={posts}>
-        {tagPosts.map((post, index) => (
+        {tagPosts.map(post => (
           <PostCard
             key={post.id}
             title={post.title}
@@ -50,20 +52,16 @@ const TagPage = ({ data, location, pageContext }) => {
             description={post.description}
             createdAt={post.createdAt}
           />
-          // <TagCard
-          //   key={post.id}
-          //   title={post.title}
-          //   id={post.id}
-          //   slug={`${_.kebabCase(post.title)}`}
-          //   tags={post.tags}
-          //   thumbnail={post.thumbnail}
-          //   description={post.description}
-          //   createdAt={post.createdAt}
-          // />
         ))}
       </Layout>
     </Wrap>
   );
+};
+
+TagPage.propTypes = {
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  pageContext: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 //* styled-component < 💅>

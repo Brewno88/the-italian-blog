@@ -53,11 +53,11 @@ const PostCard = ({ title, tags, slug, description, createdAt, thumbnail }) => {
 
 PostCard.propTypes = {
   title: PropTypes.string.isRequired,
-  tags: PropTypes.instanceOf(Array).isRequired,
+  tags: PropTypes.arrayOf(PropTypes.any).isRequired,
   slug: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
-  thumbnail: PropTypes.instanceOf(Object).isRequired,
+  thumbnail: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 //* styled-component < 💅>

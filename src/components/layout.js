@@ -5,7 +5,6 @@ import { PropTypes } from 'prop-types';
 
 import Header from './header';
 import Footer from './footer';
-// import "./global.css"
 import { colors, typography, appearance, animation } from '../utils/variables';
 import ScrollToTop from './ScrollTopButton';
 
@@ -46,8 +45,8 @@ const Layout = ({ children, location, posts }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.instanceOf(Object).isRequired,
-  posts: PropTypes.instanceOf(Array).isRequired,
+  location: PropTypes.objectOf(PropTypes.any).isRequired,
+  posts: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 const GlobalStyle = createGlobalStyle`

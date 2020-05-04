@@ -4,20 +4,26 @@ import { iconCircle } from '../utils/icons';
 
 const ScrollToTop = () => {
   const [scroll, setScroll] = useState(0);
-  useEffect(() => {
-    window.addEventListener('scroll', getScroll);
-  }, [scroll]);
 
   const getScroll = () => {
     setScroll(window.pageYOffset);
   };
+
+  useEffect(() => {
+    window.addEventListener('scroll', getScroll);
+  }, [scroll]);
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };
   return (
     <Wrap>
-      <span onClick={scrollToTop} onKeyDown={scrollToTop} role="link">
+      <span
+        onClick={scrollToTop}
+        onKeyDown={scrollToTop}
+        role="link"
+        tabIndex="0"
+      >
         {iconCircle('faArrowUp', 'primary', {
           display: scroll > 500 ? 'flex' : 'none',
           width: '5rem',

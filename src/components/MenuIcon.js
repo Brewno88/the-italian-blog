@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import { iconSolid } from '../utils/icons';
 
-const MenuIcon = ({ ...props }) => {
-  const onMenuIcon = () => props.onMenuIcon(!props.isSideMenuOpen);
+const MenuIcon = ({ isSideMenuOpen }) => {
+  const onMenuIcon = () => onMenuIcon(!isSideMenuOpen);
   return (
     <Wrap onClick={onMenuIcon}>
-      {props.isSideMenuOpen
+      {isSideMenuOpen
         ? iconSolid('faTimes', {
-          transform: 'scale(1.5)',
-        })
+            transform: 'scale(1.5)',
+          })
         : iconSolid('faBars', {
-          transform: 'scale(1.5)',
-        })}
+            transform: 'scale(1.5)',
+          })}
     </Wrap>
   );
+};
+
+MenuIcon.propTypes = {
+  isSideMenuOpen: PropTypes.string.isRequired,
 };
 
 //* styled-component < 💅>
