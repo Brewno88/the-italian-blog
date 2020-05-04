@@ -209,6 +209,9 @@ PostPage.propTypes = {
 
 //* styled-component < 💅>
 const Wrap = styled.div`
+  .hero {
+    margin-top: 0;
+  }
   .sub-header {
     position: sticky;
     top: 8rem;
@@ -277,10 +280,10 @@ const Wrap = styled.div`
     p {
       padding: 0 2rem;
     }
-  }
-  img {
-    width: 100%;
-    margin: 2rem 0;
+    img {
+      width: 100%;
+      margin: 2rem 0;
+    }
   }
 `;
 
