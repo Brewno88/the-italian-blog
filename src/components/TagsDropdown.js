@@ -19,7 +19,7 @@ const TagsDropdown = ({ posts }) => {
       <Dropdown.Menu>
         {sortedTags.map(tag => (
           <Link key={tag} to={`/tags/${tag[0]}`}>
-            {tag[0]}:{tag[1]}
+            {tag[0]} {tag[1]}
           </Link>
         ))}
       </Dropdown.Menu>
@@ -34,7 +34,7 @@ const Wrap = styled(Dropdown)`
     background: ${colors.secondary};
     border: none;
     border-radius: 0.5rem;
-    padding: 0.5rem 0.8rem;
+    padding: 0.4rem 0.5rem 0;
     font-size: 2rem;
 
     &:hover,
@@ -58,7 +58,7 @@ const Wrap = styled(Dropdown)`
       color: ${colors.primary};
       text-shadow: none;
       display: block;
-      font-size: 2rem;
+      font-size: 1.7rem;
       transition: none;
       padding: 1rem 2rem;
       white-space: nowrap;

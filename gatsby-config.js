@@ -27,6 +27,13 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Londrina Solid:100,300,400,900`, `Khula:300,400,600,700,800`],
+        display: 'swap',
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
