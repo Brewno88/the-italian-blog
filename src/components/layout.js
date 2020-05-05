@@ -55,11 +55,11 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html{
-  font-family: sans-serif;
   font-size: 62.5%;
 
 }
 body{
+  font-family: 'Khula', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: ${colors.ternary};
   position: relative;
   padding: 0 0 13rem 0;
@@ -71,7 +71,7 @@ main{
   flex: 1 0 auto;
 }
 a{
-  font-weight: bold;
+  font-weight: 600;
   color: ${colors.secondary};
   text-shadow: ${typography.shadowPrimary};
   transition: ${animation.transition.hover};
@@ -84,7 +84,7 @@ a{
   }
 }
 h1, h2, h3, h4, h5, h6{
-  font-weight: bold;
+  font-family: 'Londrina Solid';
   color: ${colors.text};
   text-shadow: ${typography.shadowPrimary};
   transition: ${animation.transition.hover};

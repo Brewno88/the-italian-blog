@@ -3,19 +3,19 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { colors, appearance, typography } from '../utils/variables';
-import { iconCircle } from '../utils/icons';
+// import { iconCircle } from '../utils/icons';
 
 const Footer = ({ siteTitle }) => (
   <MyFooter>
     <div className="container">
       <Link to="/">
-        <h3>{siteTitle}</h3>
+        <h2>{siteTitle}</h2>
       </Link>
-      <div className="social-medias">
+      {/* <div className="social-medias">
         {iconCircle('faFacebookF', 'secondary', { marginRight: '1rem' })}
         {iconCircle('faInstagram', 'secondary', { marginRight: '1rem' })}
         {iconCircle('faTwitter', 'secondary', { marginRight: '1rem' })}
-      </div>
+      </div> */}
     </div>
   </MyFooter>
 );
@@ -38,7 +38,7 @@ const MyFooter = styled.footer`
     align-items: center;
     justify-content: space-between;
     padding: 0;
-    h3 {
+    h2 {
       margin: 0;
       color: ${colors.secondary};
       text-shadow: ${typography.shadowTernary};

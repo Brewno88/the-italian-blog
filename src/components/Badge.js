@@ -14,18 +14,18 @@ const Badge = ({ children, to, theme, size }) => (
 //* styled-component < 💅>
 const MyBadge = styled(Link)`
   display: flex;
-  font-weight: bold;
   font-size: 1.3rem;
+  font-weight: 400;
   color: ${props =>
     props.theme === 'primary' ? colors.secondary : colors.primary};
   background: ${props =>
     props.theme === 'primary' ? colors.primary : colors.secondary};
-  padding: 0.4rem 0.7rem;
+  padding: 0.4rem 0.7rem 0;
   border: none;
   margin-right: 1rem;
   border-radius: 3rem;
   cursor: pointer;
-  align-self: center;
+  align-items: end;
   text-decoration: none;
   transition: ${animation.transition.hover};
   text-shadow: none;

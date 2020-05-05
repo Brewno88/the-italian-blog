@@ -22,8 +22,6 @@ const Header = ({ siteTitle, location, posts }) => {
 const MyHeader = styled.header`
   background: ${colors.primary};
   margin-bottom: ${props => (props.location.pathname === '/' ? '1.45rem' : 0)};
-
-  z-index: 5;
   padding: 2rem 2rem;
   .header-content {
     margin: 0 auto;
@@ -41,6 +39,9 @@ const MyHeader = styled.header`
     &:hover {
       color: ${colors.ternary};
       text-shadow: ${typography.shadowSecondary};
+    }
+    @media screen and (max-width: 350px) {
+      font-size: 2.8rem;
     }
   }
 `;

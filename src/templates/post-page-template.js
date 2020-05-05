@@ -259,6 +259,7 @@ const Wrap = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
+          font-weight: 300;
         }
         &--text {
           color: ${colors.secondary};

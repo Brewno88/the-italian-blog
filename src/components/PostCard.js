@@ -71,12 +71,20 @@ const Article = styled.div`
     margin: 2rem 2rem;
   }
   .thumbnail {
-    height: 15rem;
+    max-height: 30rem;
+
+    @media screen and (max-width: 767px) {
+      max-height: 20rem;
+    }
   }
   .information {
     padding: 1rem 1rem 1rem 1rem;
     .title {
       margin-bottom: 0.5rem;
+
+      @media screen and (max-width: 320px) {
+        font-size: 2.3rem;
+      }
 
       &:hover {
         color: ${colors.primary};
@@ -88,12 +96,19 @@ const Article = styled.div`
     }
     .description {
       margin-top: 0.5rem;
+      font-size: 1.6rem;
+      @media screen and (max-width: 320px) {
+        font-size: 1.5rem;
+      }
     }
     .bottom {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap-reverse;
+      align-items: center;
       .tags {
         display: flex;
+        margin-top: 1rem;
       }
     }
   }
