@@ -61,6 +61,7 @@ export const iconCircle = (icon, variant, style) => {
       style={style}
       href={socialLink}
       target="_blank"
+      rel="noopener"
     >
       <FontAwesomeIcon icon={socialIcon} className="icon" />
     </Circle>
