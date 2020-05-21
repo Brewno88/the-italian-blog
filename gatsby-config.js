@@ -38,7 +38,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `The Italian Blog`,
-        short_name: `TIB`,
+        short_name: `The Italian Blog`,
         start_url: `/`,
         background_color: `#A9E4DF`,
         theme_color: `#A9E4DF`,
@@ -48,6 +48,9 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {},
+    },
   ],
 };
