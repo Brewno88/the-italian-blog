@@ -1,4 +1,4 @@
-[The Italian Blog](https://the-italian-blog.netlify.app/)
+# [The Italian Blog](https://the-italian-blog.netlify.app/)
 
 This is a Progressive Web App blog I made using the JAMStack.
 
