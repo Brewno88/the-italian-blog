@@ -2,6 +2,10 @@
 
 This is a [Progressive Web App](https://en.wikipedia.org/wiki/Progressive_web_application) blog.
 
+<img src="src/images/PWA-score.png"
+     alt="PWA Score"
+     style="width: 500px;" />
+
 ## Stack - [JAMstack](https://jamstack.org/)
 
 - ### [GatsbyJS](https://www.gatsbyjs.org/)
